@@ -1,31 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <!-- As the main content view, the view below consumes the entire
-         space available using match_parent in both dimensions. -->
-    <ScrollView
+    <TextView android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:scrollbarStyle="outsideOverlay">
-        <TextView android:id="@+id/content_text"
-                  android:layout_width="match_parent"
-                  android:layout_height="match_parent"
-                  android:text="This is the dummy stub."
-                  android:textAppearance="?android:attr/textAppearanceMedium"/>
-    </ScrollView>
-    <!-- android:layout_gravity="left" tells DrawerLayout to treat
-         this as a sliding drawer on the left side. The drawer is
-         given a fixed width in dp and extends the full height of
-         the container. A solid background is used for contrast
-         with the content view. -->
-    <ListView android:id="@+id/left_drawer"
-              android:layout_width="300dp"
-              android:layout_height="match_parent"
-              android:layout_gravity="left"
-              android:background="@android:color/white"/>
-</android.support.v4.widget.DrawerLayout>
+        android:gravity="center"
+        android:textSize="22sp"
+        android:text="Welcome to Gitatouille" />
+    
+    <com.devspark.sidenavigation.SideNavigationView
+        android:id="@+id/side_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</RelativeLayout>

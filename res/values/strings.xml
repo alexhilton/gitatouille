@@ -4,5 +4,11 @@
     <string name="app_name">Gitatouille</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-
+    <string name="menu_git_manual">Git manual</string>
+    <string name="menu_git_tutorial">Git tutorial</string>
+    <string name="menu_git_tricks">Git tricks</string>
+    <string name="menu_git_articles">Git articles</string>
+    <string name="menu_favorites">Favorites</string>
+    <string name="menu_about_us">About us</string>
+    <string name="menu_exit">Exit</string>
 </resources>

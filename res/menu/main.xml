@@ -1,9 +1,30 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="@string/action_settings"/>
-
+        android:id="@+id/menu_git_manual"
+        android:icon="@drawable/ic_android1"
+        android:title="@string/menu_git_manual"/>
+    <item
+        android:id="@+id/menu_git_tutorial"
+        android:icon="@drawable/ic_android2"
+        android:title="@string/menu_git_tutorial"/>
+    <item
+        android:id="@+id/menu_git_tricks"
+        android:icon="@drawable/ic_android3"
+        android:title="@string/menu_git_tricks"/>
+    <item
+        android:id="@+id/menu_git_articles"
+        android:icon="@drawable/ic_android4"
+        android:title="@string/menu_git_articles"/>
+    <item
+        android:id="@+id/menu_favorites"
+        android:icon="@drawable/ic_android5"
+        android:title="@string/menu_favorites"/>
+    <item
+        android:id="@+id/menu_about_us"
+        android:icon="@drawable/ic_android5"
+        android:title="@string/menu_about_us"/>
+    <item
+        android:id="@+id/menu_exit"
+        android:icon="@drawable/ic_android5"
+        android:title="@string/menu_exit"/>
 </menu>
