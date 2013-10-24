@@ -72,4 +72,13 @@ public class HomeActivity extends SherlockActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onBackPressed() {
+        if (mNavigationView.isShown()) {
+            mNavigationView.hideMenu();
+        } else {
+            super.onBackPressed();
+        }
+    }
 }
