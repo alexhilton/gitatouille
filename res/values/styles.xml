@@ -16,5 +16,13 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-
+    <style name="general_text">
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="progit_chapter" parent="general_text">
+        <item name="android:textSize">24sp</item>
+    </style>
+        <style name="progit_section" parent="general_text">
+        <item name="android:textSize">18sp</item>
+    </style>
 </resources>

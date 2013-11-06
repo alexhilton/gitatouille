@@ -3,12 +3,21 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView android:id="@+id/content"
+    <FrameLayout android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:textSize="22sp"
-        android:text="Welcome to Gitatouille" />
+        android:layout_height="match_parent">
+	    <TextView android:id="@+id/content"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:gravity="center"
+	        android:textSize="22sp"
+	        android:text="Welcome to Gitatouille" />
+	    <ExpandableListView android:id="@+id/progit_list"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:groupIndicator="@null"
+	        android:visibility="gone"/>
+    </FrameLayout>
     
     <com.devspark.sidenavigation.SideNavigationView
         android:id="@+id/side_navigation_view"
