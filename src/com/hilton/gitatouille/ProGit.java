@@ -1,10 +1,12 @@
 package com.hilton.gitatouille;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProGit {
     public static final String CONTENT_DIR = "progit";
+    public static final String EXTRA_URL = "url";
     
     private static List<ProGitChapter> sChapters;
     
@@ -201,11 +203,16 @@ class ProGitChapter {
 }
 
 class ProGitSection {
+    private static final String BASE_URL = "file:///android_asset" + File.separator + ProGit.CONTENT_DIR;
     final String mName;
     private final String mContentLocation;
     
     public ProGitSection(String n, String cl) {
         this.mName = n;
         this.mContentLocation = cl;
+    }
+    
+    public String getUrl() {
+        return BASE_URL + File.separator + mContentLocation;
     }
 }
