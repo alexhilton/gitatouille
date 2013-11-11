@@ -20,7 +20,7 @@ a:visited {
 }
 
 #wrapper {
-  width: 50em;
+  width: auto;
   margin: 2em auto 0;
   padding: 0;
   background: #fff;
@@ -146,6 +146,7 @@ pre {
   font-family: "Consolas","Courier New",Courier,mono;
   font-size: 12px;
   letter-spacing: 0;
+  width: auto;
 }
 
 table.post-list {
