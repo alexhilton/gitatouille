@@ -6,6 +6,7 @@ import android.webkit.WebView;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
+import com.hilton.gitatouille.CustomizedWebView.OnScrollListener;
 
 public class ContentViewerActivity extends SherlockActivity {
     public static final String ACTION_VIEW_CONTENT = "com.hilton.gitatouille.VIEW_CONTENT";
@@ -18,11 +19,23 @@ public class ContentViewerActivity extends SherlockActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_viewer);
         mUrl = getIntent().getStringExtra(ProGit.EXTRA_URL);
-        final WebView wv = (WebView) findViewById(R.id.webview);
+        final CustomizedWebView wv = (CustomizedWebView) findViewById(R.id.webview);
         wv.loadUrl(mUrl);
         
         mActionBar = getSupportActionBar();
         mActionBar.setDisplayHomeAsUpEnabled(true);
+        
+        wv.setScrollListener(new OnScrollListener() {
+            @Override
+            public void scrollDown() {
+                mActionBar.hide();
+            }
+
+            @Override
+            public void scrollUp() {
+                mActionBar.show();
+            }
+        });
     }
     
     @Override
