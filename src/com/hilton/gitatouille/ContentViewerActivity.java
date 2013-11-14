@@ -1,7 +1,6 @@
 package com.hilton.gitatouille;
 
 import android.os.Bundle;
-import android.webkit.WebView;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockActivity;
