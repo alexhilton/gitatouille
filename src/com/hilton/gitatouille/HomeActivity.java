@@ -25,24 +25,9 @@ public class HomeActivity extends SherlockFragmentActivity {
             @Override
             public void onSideNavigationItemClick(int itemId) {
                 switch (itemId) {
-                case R.id.menu_git_manual:
-                    mActionBar.setTitle(R.string.menu_git_manual);
-                    break;
                 case R.id.menu_git_tutorial:
                     mActionBar.setTitle(R.string.menu_git_tutorial);
                     showProGitList();
-                    break;
-                case R.id.menu_git_tricks:
-                    mActionBar.setTitle(R.string.menu_git_tricks);
-                    break;
-                case R.id.menu_git_articles:
-                    mActionBar.setTitle(R.string.menu_git_articles);
-                    break;
-                case R.id.menu_favorites:
-                    mActionBar.setTitle(R.string.menu_favorites);
-                    break;
-                case R.id.menu_about_us:
-                    mActionBar.setTitle(R.string.menu_about_us);
                     break;
                 case R.id.menu_exit:
                     finish();
@@ -55,6 +40,8 @@ public class HomeActivity extends SherlockFragmentActivity {
         
         mActionBar = getSupportActionBar();
         mActionBar.setDisplayHomeAsUpEnabled(true);
+        
+        showProGitList();
     }
 
     @Override
