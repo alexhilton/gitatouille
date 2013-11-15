@@ -34,7 +34,12 @@ public class ProgitListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(int groupPosition, int childPosition,
             boolean isLastChild, View convertView, ViewGroup parent) {
-        final TextView name = (TextView) mViewFactory.inflate(R.layout.progit_child_item, null, false);
+        TextView name = null;
+        if (convertView == null) {
+            name = (TextView) mViewFactory.inflate(R.layout.progit_child_item, null, false);
+        } else {
+            name = (TextView) convertView;
+        }
         name.setText(getChild(groupPosition, childPosition).mName);
         return name;
     }
@@ -62,7 +67,12 @@ public class ProgitListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded,
             View convertView, ViewGroup parent) {
-        View root = mViewFactory.inflate(R.layout.progit_group_item, null, false);
+        View root = null;
+        if (convertView == null) {
+            root = mViewFactory.inflate(R.layout.progit_group_item, null, false);
+        } else {
+            root = convertView;
+        }
         TextView textView = (TextView) root.findViewById(R.id.name);
         textView.setText(getGroup(groupPosition).mName);
         ImageView indicator = (ImageView) root.findViewById(R.id.indicator);
