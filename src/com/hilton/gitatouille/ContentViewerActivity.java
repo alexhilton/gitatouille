@@ -14,7 +14,6 @@ public class ContentViewerActivity extends SherlockActivity {
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_viewer);
         mUrl = getIntent().getStringExtra(ProGit.EXTRA_URL);
@@ -27,12 +26,16 @@ public class ContentViewerActivity extends SherlockActivity {
         wv.setScrollListener(new OnScrollListener() {
             @Override
             public void scrollDown() {
-                mActionBar.hide();
+                if (mActionBar.isShowing()) {
+                    mActionBar.hide();
+                }
             }
 
             @Override
             public void scrollUp() {
-                mActionBar.show();
+                if (!mActionBar.isShowing()) {
+                    mActionBar.show();
+                }
             }
         });
     }
