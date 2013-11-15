@@ -11,24 +11,27 @@ public class CustomizedWebView extends WebView {
     
     public CustomizedWebView(Context context) {
         super(context);
+        initialize();
     }
 
     public CustomizedWebView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        initialize();
     }
 
     public CustomizedWebView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        initialize();
     }
     
     public void setScrollListener(OnScrollListener l) {
         mOnScrollListener = l;
     }
     
-    private float mStartY = Float.NaN;
-    private float mStartX = Float.NaN;
-    private boolean mScrollingDown = false;
-    private boolean mScrollingUp = false;
+    private float mStartY;
+    private float mStartX;
+    private boolean mScrollingDown;
+    private boolean mScrollingUp;
     
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -39,7 +42,7 @@ public class CustomizedWebView extends WebView {
             mStartX = event.getX();
             mStartY = event.getY();
             break;
-        case MotionEvent.ACTION_MOVE:
+        case MotionEvent.ACTION_MOVE: {
             if (Math.abs(currentX - mStartX) > EPISODE) {
                 break;
             }
@@ -57,14 +60,19 @@ public class CustomizedWebView extends WebView {
                 }
             }
             break;
+        }
         case MotionEvent.ACTION_UP:
-            mScrollingDown = false;
-            mScrollingUp = false;
-            mStartY = Float.NaN;
-            mStartX = Float.NaN;
+            initialize();
             break;
         }
         return super.onTouchEvent(event);
+    }
+
+    private void initialize() {
+        mScrollingDown = false;
+        mScrollingUp = false;
+        mStartY = Float.NaN;
+        mStartX = Float.NaN;
     }
     
     public interface OnScrollListener {
