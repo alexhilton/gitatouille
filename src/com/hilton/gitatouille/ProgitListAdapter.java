@@ -2,20 +2,19 @@ package com.hilton.gitatouille;
 
 import java.util.List;
 
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AccelerateInterpolator;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.AnimatorSet;
+import com.nineoldandroids.animation.ObjectAnimator;
+import com.nineoldandroids.view.ViewHelper;
 
 public class ProgitListAdapter extends BaseExpandableListAdapter {
     private static final int ANIMATION_DEFAULT_DURATION = 400;
@@ -41,7 +40,6 @@ public class ProgitListAdapter extends BaseExpandableListAdapter {
         return childPosition;
     }
 
-    @SuppressLint("NewApi")
     @Override
     public View getChildView(int groupPosition, int childPosition,
             boolean isLastChild, View convertView, ViewGroup parent) {
@@ -77,7 +75,6 @@ public class ProgitListAdapter extends BaseExpandableListAdapter {
         return groupPosition;
     }
     
-    @SuppressLint("NewApi")
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded,
             View convertView, ViewGroup parent) {
@@ -96,10 +93,9 @@ public class ProgitListAdapter extends BaseExpandableListAdapter {
         return root;
     }
 
-    @SuppressLint("NewApi")
     private void setupAnimation(int position, View view, ViewGroup parent, Animator flyIn) {
         Log.e(TAG, "setupAnimation position " + position);
-        view.setAlpha(0);
+        ViewHelper.setAlpha(view, 0);
         Animator alpha = ObjectAnimator.ofFloat(view, "alpha", 0, 1);
         AnimatorSet set = new AnimatorSet();
         set.playTogether(flyIn, alpha);
