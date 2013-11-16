@@ -41,6 +41,7 @@ public class ProgitListAdapter extends BaseExpandableListAdapter {
         return childPosition;
     }
 
+    @SuppressLint("NewApi")
     @Override
     public View getChildView(int groupPosition, int childPosition,
             boolean isLastChild, View convertView, ViewGroup parent) {
@@ -51,22 +52,9 @@ public class ProgitListAdapter extends BaseExpandableListAdapter {
             name = (TextView) convertView;
         }
         name.setText(getChild(groupPosition, childPosition).mName);
-        setupChildAnimation(childPosition, name, parent);
+        Animator flyIn = ObjectAnimator.ofFloat(name, "translationX", -parent.getWidth(), 0);
+        setupAnimation(childPosition, name, parent, flyIn);
         return name;
-    }
-    
-    @SuppressLint("NewApi")
-    private void setupChildAnimation(int position, View view, ViewGroup parent) {
-        Log.e(TAG, "setupChildAnimation position " + position);
-        view.setAlpha(0);
-        Animator flyIn = ObjectAnimator.ofFloat(view, "translationX", -parent.getWidth(), 0);
-        Animator alpha = ObjectAnimator.ofFloat(view, "alpha", 0, 1);
-        AnimatorSet set = new AnimatorSet();
-        set.playTogether(alpha, flyIn);
-        int delay = ANIMATION_DEFAULT_DELAY;
-        set.setStartDelay(position * delay);
-        set.setDuration(ANIMATION_DEFAULT_DURATION);
-        set.start();
     }
     
     @Override
@@ -89,13 +77,15 @@ public class ProgitListAdapter extends BaseExpandableListAdapter {
         return groupPosition;
     }
     
+    @SuppressLint("NewApi")
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded,
             View convertView, ViewGroup parent) {
         View root = null;
         if (convertView == null) {
             root = mViewFactory.inflate(R.layout.progit_group_item, null, false);
-            setupAnimation(groupPosition, root, parent);
+            Animator flyIn = ObjectAnimator.ofFloat(root, "translationY", 500, 0);
+            setupAnimation(groupPosition, root, parent, flyIn);
         } else {
             root = convertView;
         }
@@ -107,10 +97,9 @@ public class ProgitListAdapter extends BaseExpandableListAdapter {
     }
 
     @SuppressLint("NewApi")
-    private void setupAnimation(int position, View view, ViewGroup parent) {
+    private void setupAnimation(int position, View view, ViewGroup parent, Animator flyIn) {
         Log.e(TAG, "setupAnimation position " + position);
         view.setAlpha(0);
-        Animator flyIn = ObjectAnimator.ofFloat(view, "translationY", 500, 0);
         Animator alpha = ObjectAnimator.ofFloat(view, "alpha", 0, 1);
         AnimatorSet set = new AnimatorSet();
         set.playTogether(flyIn, alpha);
