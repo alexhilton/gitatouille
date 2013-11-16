@@ -51,9 +51,24 @@ public class ProgitListAdapter extends BaseExpandableListAdapter {
             name = (TextView) convertView;
         }
         name.setText(getChild(groupPosition, childPosition).mName);
+        setupChildAnimation(childPosition, name, parent);
         return name;
     }
-
+    
+    @SuppressLint("NewApi")
+    private void setupChildAnimation(int position, View view, ViewGroup parent) {
+        Log.e(TAG, "setupChildAnimation position " + position);
+        view.setAlpha(0);
+        Animator flyIn = ObjectAnimator.ofFloat(view, "translationX", -parent.getWidth(), 0);
+        Animator alpha = ObjectAnimator.ofFloat(view, "alpha", 0, 1);
+        AnimatorSet set = new AnimatorSet();
+        set.playTogether(alpha, flyIn);
+        int delay = ANIMATION_DEFAULT_DELAY;
+        set.setStartDelay(position * delay);
+        set.setDuration(ANIMATION_DEFAULT_DURATION);
+        set.start();
+    }
+    
     @Override
     public int getChildrenCount(int groupPosition) {
         return mProGitChapters.get(groupPosition).getSectionCount();
