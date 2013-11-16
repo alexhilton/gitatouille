@@ -2,15 +2,25 @@ package com.hilton.gitatouille;
 
 import java.util.List;
 
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateInterpolator;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ProgitListAdapter extends BaseExpandableListAdapter {
+    private static final int ANIMATION_DEFAULT_DURATION = 400;
+    private static final int ANIMATION_DEFAULT_DELAY = 100;
+    private static final String TAG = ProgitListAdapter.class.getName();
     private List<ProGitChapter> mProGitChapters;
     private Context mContext;
     private LayoutInflater mViewFactory;
@@ -63,13 +73,14 @@ public class ProgitListAdapter extends BaseExpandableListAdapter {
     public long getGroupId(int groupPosition) {
         return groupPosition;
     }
-
+    
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded,
             View convertView, ViewGroup parent) {
         View root = null;
         if (convertView == null) {
             root = mViewFactory.inflate(R.layout.progit_group_item, null, false);
+            setupAnimation(groupPosition, root, parent);
         } else {
             root = convertView;
         }
@@ -80,6 +91,20 @@ public class ProgitListAdapter extends BaseExpandableListAdapter {
         return root;
     }
 
+    @SuppressLint("NewApi")
+    private void setupAnimation(int position, View view, ViewGroup parent) {
+        Log.e(TAG, "setupAnimation position " + position);
+        view.setAlpha(0);
+        Animator flyIn = ObjectAnimator.ofFloat(view, "translationY", 500, 0);
+        Animator alpha = ObjectAnimator.ofFloat(view, "alpha", 0, 1);
+        AnimatorSet set = new AnimatorSet();
+        set.playTogether(flyIn, alpha);
+        int delay = ANIMATION_DEFAULT_DELAY;
+        set.setStartDelay(position * delay);
+        set.setDuration(ANIMATION_DEFAULT_DURATION);
+        set.start();
+    }
+    
     @Override
     public boolean hasStableIds() {
         return true;
