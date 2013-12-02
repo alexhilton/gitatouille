@@ -66,7 +66,7 @@ public class HomeActivity extends SherlockFragmentActivity {
     private void showProGitList() {
         Fragment progit = getSupportFragmentManager().findFragmentByTag(ProGitFragment.TAG);
         if (progit == null) {
-            progit = new ProGitFragment();
+            progit = new ProGitListFragment();
         }
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_stub, progit, ProGitFragment.TAG);
