@@ -29,6 +29,10 @@ public class HomeActivity extends SherlockFragmentActivity {
                     mActionBar.setTitle(R.string.menu_git_tutorial);
                     showProGitList();
                     break;
+                case R.id.menu_list_in_list:
+                    mActionBar.setTitle(R.string.menu_git_tutorial);
+                    showListInList();
+                    break;
                 case R.id.menu_exit:
                     finish();
                     break;
@@ -66,10 +70,21 @@ public class HomeActivity extends SherlockFragmentActivity {
     private void showProGitList() {
         Fragment progit = getSupportFragmentManager().findFragmentByTag(ProGitFragment.TAG);
         if (progit == null) {
-            progit = new ProGitListFragment();
+            progit = new ProGitFragment();
         }
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_stub, progit, ProGitFragment.TAG);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        ft.commit();
+    }
+    
+    private void showListInList() {
+        Fragment listInList = getSupportFragmentManager().findFragmentByTag(ProGitListFragment.TAG);
+        if (listInList == null) {
+            listInList = new ProGitListFragment();
+        }
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment_stub, listInList, ProGitListFragment.TAG);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         ft.commit();
     }

@@ -18,7 +18,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class ProGitListFragment extends Fragment {
-    private static final String TAG = ProGitListFragment.class.getName();
+    public static final String TAG = "list_in_list";
+    private static final String LOG_TAG = ProGitListFragment.class.getName();
     private LayoutInflater mFactory;
     
     @Override
