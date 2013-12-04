@@ -33,4 +33,15 @@
             android:layout_height="wrap_content"
             android:src="@drawable/button_tab_to_open" />
     </LinearLayout>
+    <LinearLayout android:id="@+id/sub_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+	    <ListView android:id="@+id/sub_list"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:focusable="false"
+	        android:focusableInTouchMode="false" />
+    </LinearLayout>
 </LinearLayout>

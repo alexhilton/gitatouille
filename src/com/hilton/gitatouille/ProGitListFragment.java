@@ -14,6 +14,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -40,10 +41,13 @@ public class ProGitListFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int pos, long id) {
                 Log.e("list", "clicked list item v is " + v);
-                LinearLayout itemView = (LinearLayout) v;
-                ListView subList = (ListView) mFactory.inflate(R.layout.progit_list, null, false);
-                subList.setAdapter(new ProGitChildListAdapter(getActivity(), pos));
-                itemView.addView(subList);
+                View subView = v.findViewById(R.id.sub_view);
+                if (subView.getVisibility() == View.GONE) {
+                    subView.setVisibility(View.VISIBLE);
+                    subView.setFocusable(false);
+                } else {
+                    subView.setVisibility(View.GONE);
+                }
             }
         });
         return root;
@@ -87,6 +91,9 @@ public class ProGitListFragment extends Fragment {
             textView.setText(getItem(pos).mName);
             ImageView indicator = (ImageView) root.findViewById(R.id.indicator);
             indicator.setImageResource(R.drawable.button_tab_to_open);
+            ListView subList = (ListView) root.findViewById(R.id.sub_list);
+            subList.setAdapter(new ProGitChildListAdapter(getActivity(), pos));
+            setListViewHeightBasedOnChildren(subList);
             return root;
         }
     }
@@ -134,5 +141,24 @@ public class ProGitListFragment extends Fragment {
             textView.setText(getItem(pos).mName);
             return root;
         }
+    }
+
+    private static void setListViewHeightBasedOnChildren(ListView listView) {
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null) {
+            // pre-condition
+            return;
+        }
+
+        int totalHeight = 0;
+        for (int i = 0; i < listAdapter.getCount(); i++) {
+            View listItem = listAdapter.getView(i, null, listView);
+            listItem.measure(0, 0);
+            totalHeight += listItem.getMeasuredHeight();
+        }
+
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+        listView.setLayoutParams(params);
     }
 }
