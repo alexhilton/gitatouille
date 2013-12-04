@@ -50,8 +50,6 @@ public class ProgitListAdapter extends BaseExpandableListAdapter {
             name = (TextView) convertView;
         }
         name.setText(getChild(groupPosition, childPosition).mName);
-        Animator flyIn = ObjectAnimator.ofFloat(name, "translationX", -parent.getWidth(), 0);
-        setupAnimation(childPosition, name, parent, flyIn);
         return name;
     }
     
