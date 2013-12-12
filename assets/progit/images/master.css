@@ -10,7 +10,12 @@ img.right {
   float: right;
   margin: 15px;
 }
-
+img {
+    width: 90%;
+    max-width: 90%;
+    margin-right: 10px;
+    margin-left: 10px;
+}
 a {
   color: #3E423A;
 }

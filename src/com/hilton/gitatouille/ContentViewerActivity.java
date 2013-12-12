@@ -1,6 +1,8 @@
 package com.hilton.gitatouille;
 
 import android.os.Bundle;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockActivity;
@@ -36,6 +38,12 @@ public class ContentViewerActivity extends SherlockActivity {
                 if (!mActionBar.isShowing()) {
                     mActionBar.show();
                 }
+            }
+        });
+        wv.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                return false;
             }
         });
     }
