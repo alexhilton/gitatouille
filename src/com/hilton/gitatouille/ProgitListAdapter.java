@@ -3,7 +3,6 @@ package com.hilton.gitatouille;
 import java.util.List;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,14 +10,7 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.AnimatorSet;
-import com.nineoldandroids.animation.ObjectAnimator;
-import com.nineoldandroids.view.ViewHelper;
-
 public class ProgitListAdapter extends BaseExpandableListAdapter {
-    private static final int ANIMATION_DEFAULT_DURATION = 400;
-    private static final int ANIMATION_DEFAULT_DELAY = 100;
     private static final String TAG = ProgitListAdapter.class.getName();
     private List<ProGitChapter> mProGitChapters;
     private Context mContext;
@@ -79,8 +71,6 @@ public class ProgitListAdapter extends BaseExpandableListAdapter {
         View root = null;
         if (convertView == null) {
             root = mViewFactory.inflate(R.layout.progit_group_item, null, false);
-            Animator flyIn = ObjectAnimator.ofFloat(root, "translationY", 500, 0);
-            setupAnimation(groupPosition, root, parent, flyIn);
         } else {
             root = convertView;
         }
@@ -91,18 +81,6 @@ public class ProgitListAdapter extends BaseExpandableListAdapter {
         return root;
     }
 
-    private void setupAnimation(int position, View view, ViewGroup parent, Animator flyIn) {
-        Log.e(TAG, "setupAnimation position " + position);
-        ViewHelper.setAlpha(view, 0);
-        Animator alpha = ObjectAnimator.ofFloat(view, "alpha", 0, 1);
-        AnimatorSet set = new AnimatorSet();
-        set.playTogether(flyIn, alpha);
-        int delay = ANIMATION_DEFAULT_DELAY;
-        set.setStartDelay(position * delay);
-        set.setDuration(ANIMATION_DEFAULT_DURATION);
-        set.start();
-    }
-    
     @Override
     public boolean hasStableIds() {
         return true;
