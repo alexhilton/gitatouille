@@ -145,13 +145,13 @@ pre {
   border: 1px solid #E7E5DC;
   border-width: 1px 0 4px 6px;
   padding: 1em;
-  overflow: auto;
+  overflow: scroll;
   color: black;
   line-height: 120%;
   font-family: "Consolas","Courier New",Courier,mono;
   font-size: 12px;
   letter-spacing: 0;
-  width: auto;
+  width: 90%;
 }
 
 table.post-list {
