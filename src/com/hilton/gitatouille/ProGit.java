@@ -7,12 +7,18 @@ import java.util.List;
 public class ProGit {
     public static final String CONTENT_DIR = "progit";
     public static final String EXTRA_URL = "url";
+    public static final String EXTRA_INDEX_CHAPTER = "index_chapter";
+    public static final String EXTRA_INDEX_SECTION = "index_section";
     
     private static List<ProGitChapter> sChapters;
+    private static int sCurrentChapterIndex;
+    private static int sCurrentSectionIndex;
     
     public static List<ProGitChapter> getChapters() {
         if (sChapters == null) {
             sChapters = generateChapters();
+            sCurrentChapterIndex = 0;
+            sCurrentSectionIndex = 0;
         }
         
         return sChapters;
@@ -177,6 +183,61 @@ public class ProGit {
         chap.addSection(sec);
         chapters.add(chap);
         return chapters;
+    }
+
+    private static ProGitChapter getChapter(final int index) {
+        if (index < 0 || index >= sChapters.size()) {
+            return null;
+        }
+        return sChapters.get(index);
+    }
+    
+    private static int getChapterCount() {
+        return sChapters.size();
+    }
+    
+    private static int getSectionCount(int chap) {
+        return sChapters.get(chap).getSectionCount();
+    }
+    
+    public static String getCurrentSectionUrl(int chap, int sec) {
+        if (chap < 0 || sec < 0 || chap >= getChapterCount() || sec >= getSectionCount(chap)) {
+            return "";
+        }
+        sCurrentSectionIndex = sec;
+        sCurrentChapterIndex = chap;
+        return getChapter(chap).getSection(sec).getUrl();
+    }
+    
+    public static String getNextSectionUrl() {
+        final int nextSec = sCurrentSectionIndex + 1;
+        final int nextChap = sCurrentChapterIndex + 1;
+        if (nextSec >= getSectionCount(sCurrentChapterIndex)) {
+            if (nextChap >= getChapterCount()) {
+                return "";
+            }
+            sCurrentChapterIndex = nextChap;
+            sCurrentSectionIndex = 0;
+            return getChapter(sCurrentChapterIndex).getSection(sCurrentSectionIndex).getUrl();
+        }
+        sCurrentSectionIndex = nextSec;
+        
+        return getChapter(sCurrentChapterIndex).getSection(sCurrentSectionIndex).getUrl();
+    }
+
+    public static String getPreviousSectionUrl() {
+        final int prevSec = sCurrentSectionIndex - 1;
+        final int prevChap = sCurrentChapterIndex - 1;
+        if (prevSec < 0) {
+            if (prevChap < 0) {
+                return "";
+            }
+            sCurrentChapterIndex = prevChap;
+            sCurrentSectionIndex = 0;
+            return getChapter(sCurrentChapterIndex).getSection(sCurrentSectionIndex).getUrl();
+        }
+        sCurrentSectionIndex = prevSec;
+        return getChapter(sCurrentChapterIndex).getSection(sCurrentSectionIndex).getUrl();
     }
 }
 

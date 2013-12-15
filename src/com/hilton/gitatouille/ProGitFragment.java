@@ -25,9 +25,9 @@ public class ProGitFragment extends SherlockFragment {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
                     int groupPosition, int childPosition, long id) {
-                final ProGitSection section = adapter.getChild(groupPosition, childPosition);
                 final Intent i = new Intent(ContentViewerActivity.ACTION_VIEW_CONTENT);
-                i.putExtra(ProGit.EXTRA_URL, section.getUrl());
+                i.putExtra(ProGit.EXTRA_INDEX_CHAPTER, groupPosition);
+                i.putExtra(ProGit.EXTRA_INDEX_SECTION, childPosition);
                 startActivity(i);
                 return true;
             }
