@@ -45,6 +45,16 @@ public class ContentViewerActivity extends SherlockActivity {
                     mActionBar.show();
                 }
             }
+
+            @Override
+            public void scrollLeft() {
+                loadPrevSection();
+            }
+
+            @Override
+            public void scrollRight() {
+                loadNextSection();
+            }
         });
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
@@ -70,27 +80,35 @@ public class ContentViewerActivity extends SherlockActivity {
             finish();
             return true;
         case MENU_PREV: {
-            final String url = ProGit.getPreviousSectionUrl();
-            if (TextUtils.isEmpty(url)) {
-                Toast.makeText(getApplication(), "This is the first section.", Toast.LENGTH_SHORT).show();
-                break;
-            }
-            changeUrl(url);
+            loadPrevSection();
             break;
         }
         case MENU_NEXT: {
-            final String url = ProGit.getNextSectionUrl();
-            if (TextUtils.isEmpty(url)) {
-                Toast.makeText(getApplication(), "This is the last section", Toast.LENGTH_SHORT).show();
-                break;
-            }
-            changeUrl(url);
+            loadNextSection();
             break;
         }
         default:
             break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void loadNextSection() {
+        final String url = ProGit.getNextSectionUrl();
+        if (TextUtils.isEmpty(url)) {
+            Toast.makeText(getApplication(), "This is the last section", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        changeUrl(url);
+    }
+
+    private void loadPrevSection() {
+        final String url = ProGit.getPreviousSectionUrl();
+        if (TextUtils.isEmpty(url)) {
+            Toast.makeText(getApplication(), "This is the first section.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        changeUrl(url);
     }
 
     private void changeUrl(final String url) {

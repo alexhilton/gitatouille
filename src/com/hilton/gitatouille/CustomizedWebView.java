@@ -32,6 +32,8 @@ public class CustomizedWebView extends WebView {
     private float mStartX;
     private boolean mScrollingDown;
     private boolean mScrollingUp;
+    private boolean mScrollingLeft;
+    private boolean mScrollingRight;
     
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -43,21 +45,43 @@ public class CustomizedWebView extends WebView {
             mStartY = event.getY();
             break;
         case MotionEvent.ACTION_MOVE: {
-            if (Math.abs(currentX - mStartX) > EPISODE) {
+            if ((currentX - mStartX) > EPISODE) {
+                if (!mScrollingLeft) {
+                    mScrollingLeft = true;
+                    mScrollingRight = false;
+                    mScrollingUp = false;
+                    mScrollingDown = false;
+                    mOnScrollListener.scrollLeft();
+                }
+                break;
+            } else if ((mStartX - currentX) > EPISODE) {
+                if (!mScrollingRight) {
+                    mScrollingRight = true;
+                    mScrollingLeft = false;
+                    mScrollingDown = false;
+                    mScrollingUp = false;
+                    mOnScrollListener.scrollRight();
+                }
                 break;
             }
             if ((currentY - mStartY) > EPISODE) {
                 if (!mScrollingDown) {
                     mScrollingDown = true;
                     mScrollingUp = false;
+                    mScrollingRight = false;
+                    mScrollingLeft = false;
                     mOnScrollListener.scrollUp();
                 }
+                break;
             } else if ((mStartY - currentY) > EPISODE) {
                 if (!mScrollingUp) {
                     mScrollingUp = true;
                     mScrollingDown = false;
+                    mScrollingRight = false;
+                    mScrollingLeft = false;
                     mOnScrollListener.scrollDown();
                 }
+                break;
             }
             break;
         }
@@ -71,6 +95,8 @@ public class CustomizedWebView extends WebView {
     private void initialize() {
         mScrollingDown = false;
         mScrollingUp = false;
+        mScrollingLeft = false;
+        mScrollingRight = false;
         mStartY = Float.NaN;
         mStartX = Float.NaN;
     }
@@ -78,5 +104,7 @@ public class CustomizedWebView extends WebView {
     public interface OnScrollListener {
         public void scrollDown();
         public void scrollUp();
+        public void scrollLeft();
+        public void scrollRight();
     }
 }
