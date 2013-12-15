@@ -233,7 +233,7 @@ public class ProGit {
                 return "";
             }
             sCurrentChapterIndex = prevChap;
-            sCurrentSectionIndex = 0;
+            sCurrentSectionIndex = getChapter(sCurrentChapterIndex).getSectionCount() - 1;
             return getChapter(sCurrentChapterIndex).getSection(sCurrentSectionIndex).getUrl();
         }
         sCurrentSectionIndex = prevSec;
