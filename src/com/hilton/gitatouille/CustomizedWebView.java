@@ -6,8 +6,11 @@ import android.view.MotionEvent;
 import android.webkit.WebView;
 
 public class CustomizedWebView extends WebView {
-    private static final float EPISODE = 5.0f;
+    private static final float Y_EPISODE = 10.0f;
+    private static final float X_EPISODE = 30.0f;
     private OnScrollListener mOnScrollListener;
+    private float mXEpisode;
+    private float mYEpisode;
     
     public CustomizedWebView(Context context) {
         super(context);
@@ -45,7 +48,9 @@ public class CustomizedWebView extends WebView {
             mStartY = event.getY();
             break;
         case MotionEvent.ACTION_MOVE: {
-            if ((currentX - mStartX) > EPISODE) {
+            final float dx = Math.abs(currentX - mStartX);
+            final float dy = Math.abs(currentY - mStartY);
+            if ((currentX - mStartX) > mXEpisode && dy <= mYEpisode) {
                 if (!mScrollingLeft) {
                     mScrollingLeft = true;
                     mScrollingRight = false;
@@ -54,7 +59,7 @@ public class CustomizedWebView extends WebView {
                     mOnScrollListener.scrollLeft();
                 }
                 break;
-            } else if ((mStartX - currentX) > EPISODE) {
+            } else if ((mStartX - currentX) > mXEpisode && dy <= mYEpisode) {
                 if (!mScrollingRight) {
                     mScrollingRight = true;
                     mScrollingLeft = false;
@@ -64,7 +69,7 @@ public class CustomizedWebView extends WebView {
                 }
                 break;
             }
-            if ((currentY - mStartY) > EPISODE) {
+            if ((currentY - mStartY) > mYEpisode && dx <= mXEpisode) {
                 if (!mScrollingDown) {
                     mScrollingDown = true;
                     mScrollingUp = false;
@@ -73,7 +78,7 @@ public class CustomizedWebView extends WebView {
                     mOnScrollListener.scrollUp();
                 }
                 break;
-            } else if ((mStartY - currentY) > EPISODE) {
+            } else if ((mStartY - currentY) > mYEpisode && dx <= mXEpisode) {
                 if (!mScrollingUp) {
                     mScrollingUp = true;
                     mScrollingDown = false;
@@ -99,6 +104,8 @@ public class CustomizedWebView extends WebView {
         mScrollingRight = false;
         mStartY = Float.NaN;
         mStartX = Float.NaN;
+        mXEpisode = getContext().getResources().getDisplayMetrics().density * X_EPISODE;
+        mYEpisode = getContext().getResources().getDisplayMetrics().density * Y_EPISODE;
     }
     
     public interface OnScrollListener {
