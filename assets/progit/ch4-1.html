@@ -1,13 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>Pro Git - Pro Git 4.1 服务器上的 Git 协议</title>
     <link rel="stylesheet" href="images/master.css" type="text/css" media="screen" charset="utf-8"/>
-    <script src="/javascripts/jquery.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/javascripts/jquery.github.js" type="text/javascript" charset="utf-8"></script>
-    <link rel='alternate' type='application/rss+xml' href='http://feeds.feedburner.com/ProGitBook' />
+    <link rel="stylesheet" href="../jquery.mobile-1.3.2.min.css" type="text/css" charset="utf-8" />
+    <script src="../jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../jquery.mobile-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="images/master.js" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
     <div id='wrapper'>
@@ -67,14 +67,5 @@ $ chmod a+x hooks/post-update</code></pre>
 <p>HTTP 协议的消极面在于，相对来说客户端效率更低。克隆或者下载仓库内容可能会花费更多时间，而且 HTTP 传输的体积和网络开销比其他任何一个协议都大。因为它没有按需供应的能力——传输过程中没有服务端的动态计算——因而 HTTP 协议经常会被称为 <em>傻瓜(dumb)</em> 协议。更多 HTTP 协议和其他协议效率上的差异见第九章。</p>
       </div>
     </div>
-    <script type="text/javascript">
-    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-    </script>
-    <script type="text/javascript">
-    try {
-    var pageTracker = _gat._getTracker("UA-82337-15");
-    pageTracker._trackPageview();
-    } catch(err) {}</script>
   </body>
 </html>
