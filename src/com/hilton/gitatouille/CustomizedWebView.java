@@ -56,7 +56,7 @@ public class CustomizedWebView extends WebView {
                     mScrollingRight = false;
                     mScrollingUp = false;
                     mScrollingDown = false;
-                    mOnScrollListener.scrollLeft();
+//                    mOnScrollListener.scrollLeft();
                 }
                 break;
             } else if ((mStartX - currentX) > mXEpisode && dy <= mYEpisode) {
@@ -65,7 +65,7 @@ public class CustomizedWebView extends WebView {
                     mScrollingLeft = false;
                     mScrollingDown = false;
                     mScrollingUp = false;
-                    mOnScrollListener.scrollRight();
+//                    mOnScrollListener.scrollRight();
                 }
                 break;
             }

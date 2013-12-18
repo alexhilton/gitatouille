@@ -1,11 +1,16 @@
 package com.hilton.gitatouille;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
+import android.webkit.ConsoleMessage;
+import android.webkit.JsResult;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
-
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
@@ -19,6 +24,7 @@ public class ContentViewerActivity extends SherlockActivity {
     private ActionBar mActionBar;
     private CustomizedWebView mWebView;
     
+    @SuppressLint({ "SetJavaScriptEnabled", "NewApi" })
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +32,11 @@ public class ContentViewerActivity extends SherlockActivity {
         final int chap = getIntent().getIntExtra(ProGit.EXTRA_INDEX_CHAPTER, 0);
         final int sec = getIntent().getIntExtra(ProGit.EXTRA_INDEX_SECTION, 0);
         mWebView = (CustomizedWebView) findViewById(R.id.webview);
-        mWebView.loadUrl(ProGit.getCurrentSectionUrl(chap, sec));
+        final WebSettings ws = mWebView.getSettings();
+        ws.setJavaScriptEnabled(true);
+        ws.setAllowFileAccess(true);
+        ws.setJavaScriptCanOpenWindowsAutomatically(true);
+        ws.setAllowFileAccessFromFileURLs(true);
         
         mActionBar = getSupportActionBar();
         mActionBar.setDisplayHomeAsUpEnabled(true);
@@ -56,12 +66,31 @@ public class ContentViewerActivity extends SherlockActivity {
                 loadNextSection();
             }
         });
+        
+        NavigationHelper nh = new NavigationHelper();
+        mWebView.addJavascriptInterface(nh, NavigationHelper.NAME);
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 return false;
             }
         });
+        
+        mWebView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
+                Log.e("console", String.format("%s-%s", consoleMessage.messageLevel().name(), consoleMessage.message()));
+                return true;
+            }
+
+            @Override
+            public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
+                Log.e("jsalert", "url -" + url + ", msg -" + message);
+                return super.onJsAlert(view, url, message, result);
+            }
+        });
+        
+        mWebView.loadUrl(ProGit.getCurrentSectionUrl(chap, sec));
     }
     
     @Override
@@ -114,5 +143,17 @@ public class ContentViewerActivity extends SherlockActivity {
     private void changeUrl(final String url) {
         mWebView.stopLoading();
         mWebView.loadUrl(url);
+    }
+    
+    private class NavigationHelper {
+        public static final String NAME = "NavigationHelper";
+        public String nextSection() {
+            final String url = ProGit.getNextSectionUrl();
+            return url;
+        }
+        
+        public String prevSection() {
+            return ProGit.getPreviousSectionUrl();
+        }
     }
 }

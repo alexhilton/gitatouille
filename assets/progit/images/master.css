@@ -140,6 +140,11 @@ div.post {
 
 .post br { margin-bottom: 10px;}
 
+code {
+  overflow: scroll;
+  width: 100%;
+}
+
 pre {
   background: #f8f8f8;
   border: 1px solid #E7E5DC;
