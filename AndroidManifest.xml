@@ -34,6 +34,16 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name="com.hilton.gitatouille.ProGitMobileActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden"
+            android:parentActivityName="com.hilton.gitatouille.HomeActivity">
+            <meta-data 
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hilton.gitatouille.HomeActivity"/>
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

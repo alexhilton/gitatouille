@@ -1,5 +1,6 @@
 package com.hilton.gitatouille;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -28,6 +29,10 @@ public class HomeActivity extends SherlockFragmentActivity {
                 case R.id.menu_git_tutorial:
                     mActionBar.setTitle(R.string.menu_git_tutorial);
                     showProGitList();
+                    break;
+                case R.id.menu_git_tutorial_html:
+                    mActionBar.setTitle(R.string.menu_git_tutorial_html);
+                    showProGitMobile();
                     break;
                 case R.id.menu_exit:
                     finish();
@@ -72,5 +77,11 @@ public class HomeActivity extends SherlockFragmentActivity {
         ft.replace(R.id.fragment_stub, progit, ProGitFragment.TAG);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         ft.commit();
+    }
+    
+    private void showProGitMobile() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.setClass(getApplication(), ProGitMobileActivity.class);
+        startActivity(intent);
     }
 }

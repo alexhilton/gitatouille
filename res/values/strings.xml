@@ -11,4 +11,5 @@
     <string name="menu_favorites">Favorites</string>
     <string name="menu_about_us">About us</string>
     <string name="menu_exit">Exit</string>
+    <string name="menu_git_tutorial_html">Pro Git mobile</string>
 </resources>

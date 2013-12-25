@@ -4,6 +4,10 @@
         android:icon="@drawable/ic_android2"
         android:title="@string/menu_git_tutorial"/>
     <item
+        android:id="@+id/menu_git_tutorial_html"
+        android:icon="@drawable/ic_android3"
+        android:title="@string/menu_git_tutorial_html"/>
+    <item
         android:id="@+id/menu_exit"
         android:icon="@drawable/ic_android5"
         android:title="@string/menu_exit"/>

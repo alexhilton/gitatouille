@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProGit {
+    public static final String BASE_URL = "file:///android_asset" + File.separator + ProGit.CONTENT_DIR;
     public static final String CONTENT_DIR = "progit";
     public static final String EXTRA_URL = "url";
     public static final String EXTRA_INDEX_CHAPTER = "index_chapter";
@@ -239,6 +240,10 @@ public class ProGit {
         sCurrentSectionIndex = prevSec;
         return getChapter(sCurrentChapterIndex).getSection(sCurrentSectionIndex).getUrl();
     }
+
+    public static String getHomepageUrl() {
+        return BASE_URL + File.separator + "index.html";
+    }
 }
 
 class ProGitChapter {
@@ -264,7 +269,6 @@ class ProGitChapter {
 }
 
 class ProGitSection {
-    private static final String BASE_URL = "file:///android_asset" + File.separator + ProGit.CONTENT_DIR;
     final String mName;
     private final String mContentLocation;
     
@@ -274,6 +278,6 @@ class ProGitSection {
     }
     
     public String getUrl() {
-        return BASE_URL + File.separator + mContentLocation;
+        return ProGit.BASE_URL + File.separator + mContentLocation;
     }
 }
