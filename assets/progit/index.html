@@ -8,8 +8,22 @@
     <script src="../jquery.mobile-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
-      <div>
-          <p>Hello, world!</p>
+      <div data-role="collapsible-set" class="ui-collapsible-set ui-group-theme-inherit ui-corner-all">
+          <div data-role="collapsible" class="ui-collapsible-set ui-collapsible-inset ui-corner-all ui-collapsible-themed-content ui-first-child ui-collapsible-collapsed">
+              <h3 class="ui-collapsible-heading ui-collapsible-heading-collapsed">
+                  <a href="#">Chap 1</a>
+              </h3>
+              <div aria-hidden="true">
+                  <ul data-role="listview">
+                      <li><a href="sec 1">Section 1</a></li>
+                      <li><a href="sec 2">Section 2</a></li>
+                      <li><a href="sec 3">Section 3</a></li>
+                  </ul>
+              </div>
+          </div>
+          <div data-role="collapsible">
+              <h3>Chap 2</h3>
+          </div>
       </div>
   </body>
 </html>

@@ -242,7 +242,7 @@ public class ProGit {
     }
 
     public static String getHomepageUrl() {
-        return BASE_URL + File.separator + "index.html";
+        return BASE_URL + File.separator + "index2.html";
     }
 }
 
