@@ -45,7 +45,7 @@ def removeScripts(content):
     return re.sub('<script.+?</script>', '', content, 0, re.MULTILINE | re.DOTALL)
 
 def addJQuery(content):
-    return re.sub('<link rel=\'alternate\'.+?/>', '<link rel="stylesheet" href="../jquery.mobile-1.3.2.min.css" type="text/css" charset="utf-8" />\n    <script src="../jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>\n    <script src="../jquery.mobile-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>\n    <script src="images/master.js" type="text/javascript" charset="utf-8"></script>', content, 0, 0)
+    return re.sub('<link rel=\'alternate\'.+?/>', '<link rel="stylesheet" href="../jquery.mobile-1.4.0.min.css" type="text/css" charset="utf-8" />\n    <script src="../jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>\n    <script src="../jquery.mobile-1.4.0.min.js" type="text/javascript" charset="utf-8"></script>\n    <script src="images/master.js" type="text/javascript" charset="utf-8"></script>', content, 0, 0)
 
 def process_file(html, out_dir):
     out_file = open(os.path.join(out_dir, html), 'w')
