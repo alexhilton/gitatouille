@@ -28,11 +28,12 @@ def generate_index(chaps):
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>Table of Contents</title>
-    <link rel="stylesheet" href="../jquery.mobile-1.3.2.min.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="../jquery.mobile-1.4.0.min.css" type="text/css" charset="utf-8" />
     <script src="../jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../jquery.mobile-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../jquery.mobile-1.4.0.min.js" type="text/javascript" charset="utf-8"></script>
 </head>\n'''))
     index.write(unicode('<body>\n'))
+    index.write(unicode('<div role="main" class="ui-content">\n'))
     index.write(unicode('<div data-role="collapsible-set">\n'))
     for c in chaps:
         index.write(unicode('    <div data-role="collapsible">\n'))
@@ -40,10 +41,11 @@ def generate_index(chaps):
         index.write(unicode('        <div aria-hidden="true">\n'))
         index.write(unicode('           <ul data-role="listview">\n'))
         for s in c['section']:
-            index.write(unicode('             <li><a href="%s">%s</a></li>\n' % (s['filename'], s['title'])))
+            index.write(unicode('             <li><a href="%s" class="ui-btn ui-btn-icon-right ui-icon-carat-r">%s</a></li>\n' % (s['filename'], s['title'])))
         index.write(unicode('           </ul>\n'))
         index.write(unicode('        </div>\n'))
         index.write(unicode('    </div>\n'))
+    index.write(unicode('</div>\n'))
     index.write(unicode('</div>\n'))
     index.write(unicode('</body>\n'))
     index.write(unicode('</html>'))
