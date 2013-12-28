@@ -12,53 +12,24 @@ import android.webkit.WebViewClient;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockActivity;
-import com.hilton.gitatouille.CustomizedWebView.OnScrollListener;
 
 public class ProGitMobileActivity extends SherlockActivity {
     public static final String ACTION_VIEW_CONTENT = "com.hilton.gitatouille.VIEW_CONTENT";
     private static final int MENU_PREV = 10;
     private static final int MENU_NEXT = 11;
-    private ActionBar mActionBar;
-    private CustomizedWebView mWebView;
+    private WebView mWebView;
     
-    @SuppressLint({ "SetJavaScriptEnabled", "NewApi" })
+    @SuppressLint({ "SetJavaScriptEnabled", "NewApi", "JavascriptInterface" })
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_viewer);
-        mWebView = (CustomizedWebView) findViewById(R.id.webview);
+        setContentView(R.layout.mobile);
+        mWebView = (WebView) findViewById(R.id.webview);
         final WebSettings ws = mWebView.getSettings();
         ws.setJavaScriptEnabled(true);
         ws.setAllowFileAccess(true);
         ws.setJavaScriptCanOpenWindowsAutomatically(true);
         ws.setAllowFileAccessFromFileURLs(true);
-        
-        mActionBar = getSupportActionBar();
-        mActionBar.setDisplayHomeAsUpEnabled(true);
-        
-        mWebView.setScrollListener(new OnScrollListener() {
-            @Override
-            public void scrollDown() {
-                if (mActionBar.isShowing()) {
-                    mActionBar.hide();
-                }
-            }
-
-            @Override
-            public void scrollUp() {
-                if (!mActionBar.isShowing()) {
-                    mActionBar.show();
-                }
-            }
-
-            @Override
-            public void scrollLeft() {
-            }
-
-            @Override
-            public void scrollRight() {
-            }
-        });
         
         NavigationHelper nh = new NavigationHelper();
         mWebView.addJavascriptInterface(nh, NavigationHelper.NAME);
