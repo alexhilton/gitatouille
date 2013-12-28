@@ -10,8 +10,9 @@
     <script src="images/master.js" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
-    <div id='wrapper'>
-      <div id='content'>
+    <div data-role="page">
+      <div data-role="header"><h2>Pro Git</h2></div>
+      <div role="main" class="ui-content">
         <h2 id='_git'>迁移到 Git</h2>
 <p>如果在其他版本控制系统中保存了某项目的代码而后决定转而使用 Git，那么该项目必须经历某种形式的迁移。本节将介绍 Git 中包含的一些针对常见系统的导入脚本，并将展示编写自定义的导入脚本的方法。</p>
 <h3 id='id181'>导入</h3>
@@ -245,6 +246,6 @@ $ ls
 file.rb  lib</code></pre>
 <p><code>fast-import</code> 还可以做更多——处理不同的文件模式，二进制文件，多重分支与合并，标签，进展标识等等。一些更加复杂的实例可以在 Git 源码的 <code>contib/fast-import</code> 目录里找到；其中较为出众的是前面提过的 <code>git-p4</code> 脚本。</p>
       </div>
-    </div>
+    <div data-role="footer"><h2>Pro Git</h2></div></div>
   </body>
 </html>

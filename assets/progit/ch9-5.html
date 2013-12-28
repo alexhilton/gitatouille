@@ -10,8 +10,9 @@
     <script src="images/master.js" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
-    <div id='wrapper'>
-      <div id='content'>
+    <div data-role="page">
+      <div data-role="header"><h2>Pro Git</h2></div>
+      <div role="main" class="ui-content">
         <h2 id='the_refspec'>The Refspec</h2>
 <p>这本书读到这里，你已经使用过一些简单的远程分支到本地引用的映射方式了，这种映射可以更为复杂。 假设你像这样添加了一项远程仓库：</p>
 <pre><code>$ git remote add origin git@github.com:schacon/simplegit-progit.git</code></pre>
@@ -64,6 +65,6 @@ From git@github.com:schacon/simplegit
 <pre><code>$ git push origin :topic</code></pre>
 <p>因为 refspec 的格式是 <code>&lt;src&gt;:&lt;dst&gt;</code>, 通过把 <code>&lt;src&gt;</code> 部分留空的方式，这个意思是是把远程的 <code>topic</code> 分支变成空，也就是删除它。</p>
       </div>
-    </div>
+    <div data-role="footer"><h2>Pro Git</h2></div></div>
   </body>
 </html>

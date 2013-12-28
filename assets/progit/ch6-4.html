@@ -10,8 +10,9 @@
     <script src="images/master.js" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
-    <div id='wrapper'>
-      <div id='content'>
+    <div data-role="page">
+      <div data-role="header"><h2>Pro Git</h2></div>
+      <div role="main" class="ui-content">
         <h2 id='id144'>重写历史</h2>
 <p>很多时候，在 Git 上工作的时候，你也许会由于某种原因想要修订你的提交历史。Git 的一个卓越之处就是它允许你在最后可能的时刻再作决定。你可以在你即将提交暂存区时决定什么文件归入哪一次提交，你可以使用 stash 命令来决定你暂时搁置的工作，你可以重写已经发生的提交以使它们看起来是另外一种样子。这个包括改变提交的次序、改变说明或者修改提交中包含的文件，将提交归并、拆分或者完全删除——这一切在你尚未开始将你的工作和别人共享前都是可以的。</p>
 <p>在这一节中，你会学到如何完成这些很有用的任务以使你的提交历史在你将其共享给别人之前变成你想要的样子。</p>
@@ -143,6 +144,6 @@ Ref &#39;refs/heads/master&#39; was rewritten</code></pre>
         fi&#39; HEAD</code></pre>
 <p>这个会遍历并重写所有提交使之拥有你的新地址。因为提交里包含了它们的父提交的SHA-1值，这个命令会修改你的历史中的所有提交，而不仅仅是包含了匹配的电子邮件地址的那些。</p>
       </div>
-    </div>
+    <div data-role="footer"><h2>Pro Git</h2></div></div>
   </body>
 </html>

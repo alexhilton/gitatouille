@@ -10,8 +10,9 @@
     <script src="images/master.js" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
-    <div id='wrapper'>
-      <div id='content'>
+    <div data-role="page">
+      <div data-role="header"><h2>Pro Git</h2></div>
+      <div role="main" class="ui-content">
         <h2 id='git'>Git挂钩</h2>
 <p>和其他版本控制系统一样，当某些重要事件发生时，Git 以调用自定义脚本。有两组挂钩：客户端和服务器端。客户端挂钩用于客户端的操作，如提交和合并。服务器端挂钩用于 Git 服务器端的操作，如接收被推送的提交。你可以随意地使用这些挂钩，下面会讲解其中一些。</p>
 <h3 id='id172'>安装一个挂钩</h3>
@@ -42,6 +43,6 @@
 <h4 id='update'>update</h4>
 <p>The update script is very similar to the <code>pre-receive</code> script, except that it’s run once for each branch the pusher is trying to update. If the pusher is trying to push to multiple branches, <code>pre-receive</code> runs only once, whereas update runs once per branch they’re pushing to. Instead of reading from stdin, this script takes three arguments: the name of the reference (branch), the SHA-1 that reference pointed to before the push, and the SHA-1 the user is trying to push. If the update script exits non-zero, only that reference is rejected; other references can still be updated.</p>
       </div>
-    </div>
+    <div data-role="footer"><h2>Pro Git</h2></div></div>
   </body>
 </html>

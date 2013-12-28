@@ -7,6 +7,12 @@ import re
 
 IMAGE_BASE_URL = 'http://www.webarch.org/ProGit/images/'
 
+def changeHeader(content):
+    return re.sub('<div id=\'header\'>.*?</div>', '<div data-role="header"><h2>Pro Git</h2></div>', content, 0, re.MULTILINE | re.DOTALL)
+
+def changeFooter(content):
+    return re.sub('</div>\s+<div id=\'footer\'>.*?</div>', '<div data-role="footer"><h2>Pro Git</h2></div></div>', content, 0, re.MULTILINE | re.DOTALL)
+
 def extract_id(pattern, content):
     return re.sub('<div id=\'' + pattern + '\'>.*?</div>', '', content, 0, re.MULTILINE | re.DOTALL)
 
@@ -47,23 +53,31 @@ def removeScripts(content):
 def addJQuery(content):
     return re.sub('<link rel=\'alternate\'.+?/>', '<link rel="stylesheet" href="../jquery.mobile-1.4.0.min.css" type="text/css" charset="utf-8" />\n    <script src="../jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>\n    <script src="../jquery.mobile-1.4.0.min.js" type="text/javascript" charset="utf-8"></script>\n    <script src="images/master.js" type="text/javascript" charset="utf-8"></script>', content, 0, 0)
 
+def changeWrapper(content):
+    return re.sub('<div id=\'wrapper\'>', '<div data-role="page">', content, 0, 0)
+
+def changeContent(content):
+    return re.sub('<div id=\'content\'>', '<div role="main" class="ui-content">', content, 0, 0)
+
 def process_file(html, out_dir):
     out_file = open(os.path.join(out_dir, html), 'w')
     in_file = open(html, 'r')
     content = in_file.read()
     in_file.close()
-    new_content = extract_id('header', content)
+    new_content = changeHeader(content)
+    new_content = changeFooter(new_content)
     new_content = extract_id('menu', new_content)
     new_content = extract_message('message', new_content)
     new_content = extract_id('nav', new_content)
-    new_content = extract_id('footer', new_content)
     new_content = extract_class('clearfix', new_content)
     new_content = changeDoc(new_content)
     new_content = removeScripts(new_content)
     new_content = extract_spaces(new_content)
     new_content = extract_newlines(new_content)
     new_content = addJQuery(new_content)
-    extract_images(new_content)
+    new_content = changeWrapper(new_content)
+    new_content = changeContent(new_content)
+    #extract_images(new_content)
     out_file.write(new_content)
     out_file.close()
 

@@ -10,8 +10,9 @@
     <script src="images/master.js" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
-    <div id='wrapper'>
-      <div id='content'>
+    <div data-role="page">
+      <div data-role="header"><h2>Pro Git</h2></div>
+      <div role="main" class="ui-content">
         <h2 id='an_example_gitenforced_policy'>An Example Git-Enforced Policy</h2>
 <p>In this section, you’ll use what you’ve learned to establish a Git workflow that checks for a custom commit message format, enforces fast-forward-only pushes, and allows only certain users to modify certain subdirectories in a project. You’ll build client scripts that help the developer know if their push will be rejected and server scripts that actually enforce the policies.</p>
 <p>I used Ruby to write these, both because it’s my preferred scripting language and because I feel it’s the most pseudocode-looking of the scripting languages; thus you should be able to roughly follow the code even if you don’t use Ruby. However, any language will work fine. All the sample hook scripts distributed with Git are in either Perl or Bash scripting, so you can also see plenty of examples of hooks in those languages by looking at the samples.</p>
@@ -245,6 +246,6 @@ end</code></pre>
 <p>The <code>SHA^@</code> syntax resolves to all the parents of that commit. You’re looking for any commit that is reachable from the last commit on the remote and that isn’t reachable from any parent of any of the SHAs you’re trying to push up — meaning it’s a fast-forward.</p>
 <p>The main drawback to this approach is that it can be very slow and is often unnecessary — if you don’t try to force the push with <code>-f</code>, the server will warn you and not accept the push. However, it’s an interesting exercise and can in theory help you avoid a rebase that you might later have to go back and fix.</p>
       </div>
-    </div>
+    <div data-role="footer"><h2>Pro Git</h2></div></div>
   </body>
 </html>

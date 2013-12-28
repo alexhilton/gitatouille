@@ -10,8 +10,9 @@
     <script src="images/master.js" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
-    <div id='wrapper'>
-      <div id='content'>
+    <div data-role="page">
+      <div data-role="header"><h2>Pro Git</h2></div>
+      <div role="main" class="ui-content">
         <h2 id='git_'>Git 对象</h2>
 <p>Git 是一套内容寻址文件系统。很不错。不过这是什么意思呢？</p>
 <p>这种说法的意思是，从内部来看，Git 是简单的 key-value 数据存储。它允许插入任意类型的内容，并会返回一个键值，通过该键值可以在任何时候再取出该内容。可以通过底层命令 <code>hash-object</code> 来示范这点，传一些数据给该命令，它会将数据保存在 <code>.git</code> 目录并返回表示这些数据的键值。首先初使化一个 Git 仓库并确认 <code>objects</code> 目录是空的：</p>
@@ -185,6 +186,6 @@ Date:   Fri May 22 18:09:34 2009 -0700
 =&gt; 32</code></pre>
 <p>这就行了 ── 你已经创建了一个正确的 blob 对象。所有的 Git 对象都以这种方式存储，惟一的区别是类型不同 ── 除了字符串 blob，文件头起始内容还可以是 commit 或 tree 。不过虽然 blob 几乎可以是任意内容，commit 和 tree 的数据却是有固定格式的。</p>
       </div>
-    </div>
+    <div data-role="footer"><h2>Pro Git</h2></div></div>
   </body>
 </html>

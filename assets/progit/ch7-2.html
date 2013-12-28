@@ -10,8 +10,9 @@
     <script src="images/master.js" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
-    <div id='wrapper'>
-      <div id='content'>
+    <div data-role="page">
+      <div data-role="header"><h2>Pro Git</h2></div>
+      <div role="main" class="ui-content">
         <h2 id='git'>Git属性</h2>
 <p>一些设置项也能被运用于特定的路径中，这样，Git 以对一个特定的子目录或子文件集运用那些设置项。这些设置项被称为 Git 属性，可以在你目录中的<code>.gitattributes</code>文件内进行设置 （通常是你项目的根目录），也可以当你不想让这些属性文件和项目文件一同提交时，在<code>.git/info/attributes</code>进行设置。</p>
 <p>使用属性，你可以对个别文件或目录定义不同的合并策略，让 Git 知道怎样比较非文本文件，在你提交或签出前让 Git 过滤内容。你将在这部分了解到能在自己的项目中使用的属性，以及一些实例。</p>
@@ -137,6 +138,6 @@ Auto-merging database.xml
 Merge made by recursive.</code></pre>
 <p>这样，database.xml会保持原样。</p>
       </div>
-    </div>
+    <div data-role="footer"><h2>Pro Git</h2></div></div>
   </body>
 </html>
