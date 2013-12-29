@@ -8,10 +8,10 @@ import re
 IMAGE_BASE_URL = 'http://www.webarch.org/ProGit/images/'
 
 def changeHeader(content):
-    return re.sub('<div id=\'header\'>.*?</div>', '<div data-role="header"><h2>Pro Git</h2></div>', content, 0, re.MULTILINE | re.DOTALL)
+    return re.sub('<div id=\'header\'>.*?</div>', '<div data-role="header" data-position="fixed"><h2>Pro Git</h2></div>', content, 0, re.MULTILINE | re.DOTALL)
 
 def changeFooter(content):
-    return re.sub('</div>\s+<div id=\'footer\'>.*?</div>', '<div data-role="footer"><h2>Pro Git</h2></div></div>', content, 0, re.MULTILINE | re.DOTALL)
+    return re.sub('</div>\s+<div id=\'footer\'>.*?</div>', '<div data-role="footer" data-position="fixed"><div data-role="navbar"><ul><li><a href="index2.html>Pro Git</a></li></ul></div></div></div>', content, 0, re.MULTILINE | re.DOTALL)
 
 def extract_id(pattern, content):
     return re.sub('<div id=\'' + pattern + '\'>.*?</div>', '', content, 0, re.MULTILINE | re.DOTALL)
@@ -57,7 +57,7 @@ def changeWrapper(content):
     return re.sub('<div id=\'wrapper\'>', '<div data-role="page">', content, 0, 0)
 
 def changeContent(content):
-    return re.sub('<div id=\'content\'>', '<div role="main" class="ui-content">', content, 0, 0)
+    return re.sub('<div id=\'content\'>', '<div data-role="content">', content, 0, 0)
 
 def process_file(html, out_dir):
     out_file = open(os.path.join(out_dir, html), 'w')
@@ -88,4 +88,7 @@ def extract_file(out_dir, dirname, names):
             if html.endswith('.html'):
                 process_file(html, out_dir)
 
-os.path.walk('.', extract_file, 'progit')
+target_dir = '../assets/progit'
+if not os.path.exists(target_dir):
+    os.mkdir(target_dir)
+os.path.walk('.', extract_file, target_dir)

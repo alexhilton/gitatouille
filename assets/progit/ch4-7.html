@@ -11,8 +11,8 @@
   </head>
   <body>
     <div data-role="page">
-      <div data-role="header"><h2>Pro Git</h2></div>
-      <div role="main" class="ui-content">
+      <div data-role="header" data-position="fixed"><h2>Pro Git</h2></div>
+      <div data-role="content">
         <h2 id='_gitosis'>权限管理器 Gitosis</h2>
 <p>把所有用户的公钥保存在 <code>authorized_keys</code> 文件的做法只能暂时奏效。当用户数量到了几百人的时候，它会变成一种痛苦。每一次都必须进入服务器的 shell，而且缺少对连接的限制——文件里的每个人都对所有项目拥有读写权限。</p>
 <p>现在，是时候向广泛使用的软件 Gitosis 求救了。Gitosis 简单的说就是一套用来管理 <code>authorized_keys</code> 文件和实现简单连接限制的脚本。最有意思的是，该软件用来添加用户和设定权限的界面不是网页，而是一个特殊的 Git 仓库。你只需要设定好某个项目；然后推送，Gitosis 就会随之改变服务器设定，酷吧？</p>
@@ -103,6 +103,6 @@ members = john</code></pre>
 <p>现在 John 可以克隆和获取更新，但 Gitosis 不会允许他向项目推送任何内容。这样的组可以有尽可能有随意多个，每一个包含不同的用户和项目。甚至可以指定某个组为成员，来继承它所有的成员。</p>
 <p>如果出现了什么问题，把 <code>loglevel=DEBUG</code> 加入到 <code>[gitosis]</code> 部分或许有帮助（译注：把日志设置到调试级别，记录更详细的信息）。如果你一不小心搞错了配置，失去了推送权限，可以手动修改服务器上的 <code>/home/git/.gitosis</code> 文件—— Gitosis 从该文件读取信息。一次推送会把 <code>gitosis.conf</code> 保存在服务器上。如果你手动编辑该文件，它将在你下次向 <code>gitosis-admin</code> 推送之前它将保持原样。</p>
       </div>
-    <div data-role="footer"><h2>Pro Git</h2></div></div>
+    <div data-role="footer" data-position="fixed"><div data-role="navbar"><ul><li><a href="index2.html>Pro Git</a></li></ul></div></div></div>
   </body>
 </html>

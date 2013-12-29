@@ -11,8 +11,8 @@
   </head>
   <body>
     <div data-role="page">
-      <div data-role="header"><h2>Pro Git</h2></div>
-      <div role="main" class="ui-content">
+      <div data-role="header" data-position="fixed"><h2>Pro Git</h2></div>
+      <div data-role="content">
         <h2 id='_git_'>取得项目的 Git 仓库</h2>
 <p>有两种取得 Git 项目仓库的方法。第一种是在现存的目录下，通过导入所有文件来创建新的 Git 仓库。第二种是从已有的 Git 仓库克隆出一个新的镜像仓库来。</p>
 <h3 id='id32'>从当前目录初始化</h3>
@@ -33,6 +33,6 @@ $ git commit -m &#39;initial project version&#39;</code></pre>
 <p>唯一的差别就是，现在新建的目录成了 mygrit，其他的都和上边的一样。</p>
 <p>Git 支持许多数据传输协议。之前的例子使用的是 <code>git://</code> 协议，不过你也可以用 <code>http(s)://</code> 或者 <code>user@server:/path.git</code> 表示的 SSH 传输协议。我们会在第四章详细介绍所有这些协议在服务器端该如何配置使用，以及各种方式之间的利弊。</p>
       </div>
-    <div data-role="footer"><h2>Pro Git</h2></div></div>
+    <div data-role="footer" data-position="fixed"><div data-role="navbar"><ul><li><a href="index2.html>Pro Git</a></li></ul></div></div></div>
   </body>
 </html>

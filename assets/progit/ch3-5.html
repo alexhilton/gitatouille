@@ -11,8 +11,8 @@
   </head>
   <body>
     <div data-role="page">
-      <div data-role="header"><h2>Pro Git</h2></div>
-      <div role="main" class="ui-content">
+      <div data-role="header" data-position="fixed"><h2>Pro Git</h2></div>
+      <div data-role="content">
         <h2 id='id79'>远程分支</h2>
 <p>远程分支（remote branch）是对远程仓库状态的索引。它们是一些无法移动的本地分支；只有在进行 Git 的网络活动时才会更新。远程分支就像是书签，提醒着你上次连接远程仓库时上面各分支的位置。</p>
 <p>我们用 <code>(远程仓库名)/(分支名)</code> 这样的形式表示远程分支。比如我们想看看上次同 <code>origin</code> 仓库通讯时 <code>master</code> 的样子，就应该查看 <code>origin/master</code> 分支。如果你和同伴一起修复某个问题，但他们先推送了一个 <code>iss53</code> 分支到远程仓库，虽然你可能也有一个本地的 <code>iss53</code> 分支，但指向服务器上最新更新的却应该是 <code>origin/iss53</code> 分支。</p>
@@ -69,6 +69,6 @@ To git@github.com:schacon/simplegit.git
  - [deleted]         serverfix</code></pre>
 <p>咚！服务器上的分支没了。你最好特别留心这一页，因为你一定会用到那个命令，而且你很可能会忘掉它的语法。有种方便记忆这条命令的方法：记住我们不久前见过的 <code>git push [远程名] [本地分支]:[远程分支]</code> 语法，如果省略 <code>[本地分支]</code>，那就等于是在说“在这里提取空白然后把它变成<code>[远程分支]</code>”。</p>
       </div>
-    <div data-role="footer"><h2>Pro Git</h2></div></div>
+    <div data-role="footer" data-position="fixed"><div data-role="navbar"><ul><li><a href="index2.html>Pro Git</a></li></ul></div></div></div>
   </body>
 </html>

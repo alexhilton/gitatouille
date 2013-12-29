@@ -11,8 +11,8 @@
   </head>
   <body>
     <div data-role="page">
-      <div data-role="header"><h2>Pro Git</h2></div>
-      <div role="main" class="ui-content">
+      <div data-role="header" data-position="fixed"><h2>Pro Git</h2></div>
+      <div data-role="content">
         <h2 id='git_'>Git 基础要点</h2>
 <p>那么，简单地说，Git 究竟是怎样的一个系统呢？请注意，接下来的内容非常重要，若是理解了 Git 的思想和基本的工作原理，用起来就会知其所以然，游刃有余。在开始学习 Git 的时候，请不要尝试把各种概念和其他的版本控制系统诸如 Subversion 和 Perforce 等相比拟，否则容易混淆每个操作的实际意义。Git 在保存和处理各种信息的时候，虽然操作起来的命令形式非常相近，但它与其他版本控制系统的做法颇为不同。理解这些差异将有助于你准确地使用 Git 提供的各种工具。</p>
 <h3 id='id20'>直接快照，而非比较差异</h3>
@@ -44,6 +44,6 @@
 <p>1. 在工作目录中修改某些文件。 2. 对这些修改了的文件作快照，并保存到暂存区域。 3. 提交更新，将保存在暂存区域的文件快照转储到 git 目录中。</p>
 <p>所以，我们可以从文件所处的位置来判断状态：如果是 git 目录中保存着的特定版本文件，就属于已提交状态；如果作了修改并已放入暂存区域，就属于已暂存状态；如果自上次取出后，作了修改但还没有放到暂存区域，就是已修改状态。到第二章的时候，我们会进一步了解个中细节，并学会如何善用这些状态，以及如何跳过暂存环节。</p>
       </div>
-    <div data-role="footer"><h2>Pro Git</h2></div></div>
+    <div data-role="footer" data-position="fixed"><div data-role="navbar"><ul><li><a href="index2.html>Pro Git</a></li></ul></div></div></div>
   </body>
 </html>

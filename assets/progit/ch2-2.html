@@ -11,8 +11,8 @@
   </head>
   <body>
     <div data-role="page">
-      <div data-role="header"><h2>Pro Git</h2></div>
-      <div role="main" class="ui-content">
+      <div data-role="header" data-position="fixed"><h2>Pro Git</h2></div>
+      <div data-role="content">
         <h2 id='id34'>记录每次更新到仓库</h2>
 <p>现在我们手上已经有了一个真实项目的 Git 仓库，并从这个仓库中取出了所有文件的工作拷贝。接下来，对这些文件作些修改，在完成了一个阶段的目标之后，提交本次更新到仓库。</p>
 <p>请记住，工作目录下面的所有文件都不外乎这两种状态：已跟踪或未跟踪。已跟踪的文件是指本来就被纳入版本控制管理的文件，在上次快照中有它们的记录，工作一段时间后，它们的状态可能是未更新，已修改或者已放入暂存区。而所有其他文件都属于未跟踪文件。它们既没有上次更新时的快照，也不在当前的暂存区域。初次克隆某个仓库时，工作目录中的所有文件都属于已跟踪文件，且状态为未修改。</p>
@@ -290,6 +290,6 @@ $ git rm README.txt
 $ git add README</code></pre>
 <p>如此分开操作，Git 也会意识到这是一次改名，所以不管何种方式都一样。当然，直接用 <code>git mv</code> 轻便得多，不过有时候用其他工具批处理改名的话，要记得在提交前删除老的文件名，再添加新的文件名。</p>
       </div>
-    <div data-role="footer"><h2>Pro Git</h2></div></div>
+    <div data-role="footer" data-position="fixed"><div data-role="navbar"><ul><li><a href="index2.html>Pro Git</a></li></ul></div></div></div>
   </body>
 </html>

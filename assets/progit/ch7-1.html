@@ -11,8 +11,8 @@
   </head>
   <body>
     <div data-role="page">
-      <div data-role="header"><h2>Pro Git</h2></div>
-      <div role="main" class="ui-content">
+      <div data-role="header" data-position="fixed"><h2>Pro Git</h2></div>
+      <div data-role="content">
         <h2 id='_git'>配置 Git</h2>
 <p>正如你在第一章见到的那样，你能用<code>git config</code>配置 Git，要做的第一件事就是设置名字和邮箱地址：</p>
 <pre><code>$ git config --global user.name &quot;John Doe&quot;
@@ -172,6 +172,6 @@ $ git config --global diff.external extDiff</code></pre>
 <pre><code>$ git config --system receive.denyDeletes true</code></pre>
 <p>这样会在推送过程中阻止删除分支和标签 — 没有用户能够这么做。要删除远程分支，必须从服务器手动删除引用文件。通过用户访问控制列表也能这么做， 在本章结尾将会介绍这些有趣的方式。</p>
       </div>
-    <div data-role="footer"><h2>Pro Git</h2></div></div>
+    <div data-role="footer" data-position="fixed"><div data-role="navbar"><ul><li><a href="index2.html>Pro Git</a></li></ul></div></div></div>
   </body>
 </html>

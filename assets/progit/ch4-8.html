@@ -11,8 +11,8 @@
   </head>
   <body>
     <div data-role="page">
-      <div data-role="header"><h2>Pro Git</h2></div>
-      <div role="main" class="ui-content">
+      <div data-role="header" data-position="fixed"><h2>Pro Git</h2></div>
+      <div data-role="content">
         <h2 id='git_'>Git 进程</h2>
 <p>公共，非授权的只读访问要求我们在 HTTP 协议的基础上使用 Git 协议。主因在于速度。Git 协议更为高效，进而比 HTTP 协议更迅速，所以它能节省很多时间。</p>
 <p>重申一下，这一点只适用于非授权、只读的访问。如果在防火墙之外的服务器上，该服务的使用应该局限于公诸于世的项目。假如是在防火墙之内，它也可以用于具有大量参与人员或者主机（长期整合资源或编译的服务器）的只读访问的项目，可以省去为逐一添加 SSH 公钥的麻烦。</p>
@@ -53,6 +53,6 @@ daemon = yes
 gitweb = yes</code></pre>
 <p>如果现在提交和推送该项目，GitWeb 会自动开始展示我们的 iphone 项目。</p>
       </div>
-    <div data-role="footer"><h2>Pro Git</h2></div></div>
+    <div data-role="footer" data-position="fixed"><div data-role="navbar"><ul><li><a href="index2.html>Pro Git</a></li></ul></div></div></div>
   </body>
 </html>
