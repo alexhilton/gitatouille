@@ -11,7 +11,13 @@
   </head>
   <body>
     <div data-role="page">
-      <div data-role="header" data-position="fixed"><h2>Pro Git</h2></div>
+      <div data-role="header" data-position="fixed">
+<div data-role="controlgroup" data-type="horizontal">
+     <a href="#" data-ajax="false" data-role="button" data-icon="arrow-l" data-inline="true">Prev</a>
+     <a href="index2.html" data-ajax="false" data-role="button" data-icon="home" data-inline="true">Home</a>
+     <a href="#" data-ajax="false" data-role="button" data-icon="arrow-r" data-inline="true">Next</a>
+</div>
+</div>
       <div data-role="content">
         <h2 id='id101'>公共访问</h2>
 <p>匿名的读取权限该怎么实现呢？也许除了内部私有的项目之外，你还需要托管一些开源项目。抑或你使用一些自动化的服务器来进行编译，或者一些经常变化的服务器群组，而又不想整天生成新的 SSH 密钥——总之，你需要简单的匿名读取权限。</p>
@@ -41,6 +47,13 @@ exec git-update-server-info</code></pre>
 <pre><code>$ git clone http://git.gitserver/project.git</code></pre>
 <p>这一招可以让你在几分钟内为相当数量的用户架设好基于 HTTP 的读取权限。另一个提供非授权访问的简单方法是开启一个 Git 守护进程，不过这将要求该进程的常驻——下一节将是想走这条路的人准备的。</p>
       </div>
-    <div data-role="footer" data-position="fixed"><div data-role="navbar"><ul><li><a href="index2.html>Pro Git</a></li></ul></div></div></div>
+    <div data-role="footer" data-position="fixed">
+    <div data-role="controlgroup" data-type="horizontal">
+        <a href="#" data-ajax="false" data-role="button" data-icon="arrow-l" data-inline="true">Prev</a>
+        <a href="index2.html" data-ajax="false" data-role="button" data-icon="home" data-inline="true">Home</a>
+        <a href="#" data-ajax="false" data-role="button" data-icon="arrow-r" data-inline="true">Next</a>
+    </div>
+</div>
+</div>
   </body>
 </html>

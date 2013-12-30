@@ -11,7 +11,13 @@
   </head>
   <body>
     <div data-role="page">
-      <div data-role="header" data-position="fixed"><h2>Pro Git</h2></div>
+      <div data-role="header" data-position="fixed">
+<div data-role="controlgroup" data-type="horizontal">
+     <a href="#" data-ajax="false" data-role="button" data-icon="arrow-l" data-inline="true">Prev</a>
+     <a href="index2.html" data-ajax="false" data-role="button" data-icon="home" data-inline="true">Home</a>
+     <a href="#" data-ajax="false" data-role="button" data-icon="arrow-r" data-inline="true">Next</a>
+</div>
+</div>
       <div data-role="content">
         <h2 id='id100'>架设服务器</h2>
 <p>现在我们过一边服务器端架设 SSH 访问的流程。本例将使用 <code>authorized_keys</code> 方法来给用户授权。我们还将假定使用类似 Ubuntu 这样的标准 Linux 发行版。首先，创建一个 &#8216;git&#8217; 用户并为其创建一个 <code>.ssh</code> 目录（译注：在用户的主目录下）。</p>
@@ -61,6 +67,13 @@ $ git push origin master</code></pre>
 fatal: What do you think I am? A shell? （你以为我是个啥？shell吗？)
 Connection to gitserver closed. （gitserver 连接已断开。）</code></pre>
       </div>
-    <div data-role="footer" data-position="fixed"><div data-role="navbar"><ul><li><a href="index2.html>Pro Git</a></li></ul></div></div></div>
+    <div data-role="footer" data-position="fixed">
+    <div data-role="controlgroup" data-type="horizontal">
+        <a href="#" data-ajax="false" data-role="button" data-icon="arrow-l" data-inline="true">Prev</a>
+        <a href="index2.html" data-ajax="false" data-role="button" data-icon="home" data-inline="true">Home</a>
+        <a href="#" data-ajax="false" data-role="button" data-icon="arrow-r" data-inline="true">Next</a>
+    </div>
+</div>
+</div>
   </body>
 </html>

@@ -11,7 +11,13 @@
   </head>
   <body>
     <div data-role="page">
-      <div data-role="header" data-position="fixed"><h2>Pro Git</h2></div>
+      <div data-role="header" data-position="fixed">
+<div data-role="controlgroup" data-type="horizontal">
+     <a href="#" data-ajax="false" data-role="button" data-icon="arrow-l" data-inline="true">Prev</a>
+     <a href="index2.html" data-ajax="false" data-role="button" data-icon="home" data-inline="true">Home</a>
+     <a href="#" data-ajax="false" data-role="button" data-icon="arrow-r" data-inline="true">Next</a>
+</div>
+</div>
       <div data-role="content">
         <h2 id='id83'>衍合</h2>
 <p>把一个分支整合到另一个分支的办法有两种：<code>merge（合并）</code> 和 <code>rebase（衍合）</code>。在本章我们会学习什么是衍合，如何使用衍合，为什么衍合操作如此富有魅力，以及我们应该在什么情况下使用衍合。</p>
@@ -71,6 +77,13 @@ $ git branch -d server</code></pre>
 <p>你迟早都是要并入其他协作者提交的内容的，这样才能保持同步。当你做完这些，你的提交历史里会同时包含 C4 和 C4&#8217;，两者有着不同的 SHA-1 校验值，但却拥有一样的作者日期与提交说明，令人费解！更糟糕的是，当你把这样的历史推送到服务器，会再次把这些衍合的提交引入到中央服务器，进一步迷惑其他人。</p>
 <p>如果把衍合当成一种在推送之前清理提交历史的手段，而且仅仅衍合那些永远不会公开的 commit，那就不会有任何问题。如果衍合那些已经公开的 commit，而与此同时其他人已经用这些 commit 进行了后续的开发工作，那你有得麻烦了。</p>
       </div>
-    <div data-role="footer" data-position="fixed"><div data-role="navbar"><ul><li><a href="index2.html>Pro Git</a></li></ul></div></div></div>
+    <div data-role="footer" data-position="fixed">
+    <div data-role="controlgroup" data-type="horizontal">
+        <a href="#" data-ajax="false" data-role="button" data-icon="arrow-l" data-inline="true">Prev</a>
+        <a href="index2.html" data-ajax="false" data-role="button" data-icon="home" data-inline="true">Home</a>
+        <a href="#" data-ajax="false" data-role="button" data-icon="arrow-r" data-inline="true">Next</a>
+    </div>
+</div>
+</div>
   </body>
 </html>

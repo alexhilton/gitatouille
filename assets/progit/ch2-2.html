@@ -11,7 +11,13 @@
   </head>
   <body>
     <div data-role="page">
-      <div data-role="header" data-position="fixed"><h2>Pro Git</h2></div>
+      <div data-role="header" data-position="fixed">
+<div data-role="controlgroup" data-type="horizontal">
+     <a href="#" data-ajax="false" data-role="button" data-icon="arrow-l" data-inline="true">Prev</a>
+     <a href="index2.html" data-ajax="false" data-role="button" data-icon="home" data-inline="true">Home</a>
+     <a href="#" data-ajax="false" data-role="button" data-icon="arrow-r" data-inline="true">Next</a>
+</div>
+</div>
       <div data-role="content">
         <h2 id='id34'>记录每次更新到仓库</h2>
 <p>现在我们手上已经有了一个真实项目的 Git 仓库，并从这个仓库中取出了所有文件的工作拷贝。接下来，对这些文件作些修改，在完成了一个阶段的目标之后，提交本次更新到仓库。</p>
@@ -290,6 +296,13 @@ $ git rm README.txt
 $ git add README</code></pre>
 <p>如此分开操作，Git 也会意识到这是一次改名，所以不管何种方式都一样。当然，直接用 <code>git mv</code> 轻便得多，不过有时候用其他工具批处理改名的话，要记得在提交前删除老的文件名，再添加新的文件名。</p>
       </div>
-    <div data-role="footer" data-position="fixed"><div data-role="navbar"><ul><li><a href="index2.html>Pro Git</a></li></ul></div></div></div>
+    <div data-role="footer" data-position="fixed">
+    <div data-role="controlgroup" data-type="horizontal">
+        <a href="#" data-ajax="false" data-role="button" data-icon="arrow-l" data-inline="true">Prev</a>
+        <a href="index2.html" data-ajax="false" data-role="button" data-icon="home" data-inline="true">Home</a>
+        <a href="#" data-ajax="false" data-role="button" data-icon="arrow-r" data-inline="true">Next</a>
+    </div>
+</div>
+</div>
   </body>
 </html>

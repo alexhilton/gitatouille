@@ -11,7 +11,13 @@
   </head>
   <body>
     <div data-role="page">
-      <div data-role="header" data-position="fixed"><h2>Pro Git</h2></div>
+      <div data-role="header" data-position="fixed">
+<div data-role="controlgroup" data-type="horizontal">
+     <a href="#" data-ajax="false" data-role="button" data-icon="arrow-l" data-inline="true">Prev</a>
+     <a href="index2.html" data-ajax="false" data-role="button" data-icon="home" data-inline="true">Home</a>
+     <a href="#" data-ajax="false" data-role="button" data-icon="arrow-r" data-inline="true">Next</a>
+</div>
+</div>
       <div data-role="content">
         <h2 id='git_'>Git 对象</h2>
 <p>Git 是一套内容寻址文件系统。很不错。不过这是什么意思呢？</p>
@@ -186,6 +192,13 @@ Date:   Fri May 22 18:09:34 2009 -0700
 =&gt; 32</code></pre>
 <p>这就行了 ── 你已经创建了一个正确的 blob 对象。所有的 Git 对象都以这种方式存储，惟一的区别是类型不同 ── 除了字符串 blob，文件头起始内容还可以是 commit 或 tree 。不过虽然 blob 几乎可以是任意内容，commit 和 tree 的数据却是有固定格式的。</p>
       </div>
-    <div data-role="footer" data-position="fixed"><div data-role="navbar"><ul><li><a href="index2.html>Pro Git</a></li></ul></div></div></div>
+    <div data-role="footer" data-position="fixed">
+    <div data-role="controlgroup" data-type="horizontal">
+        <a href="#" data-ajax="false" data-role="button" data-icon="arrow-l" data-inline="true">Prev</a>
+        <a href="index2.html" data-ajax="false" data-role="button" data-icon="home" data-inline="true">Home</a>
+        <a href="#" data-ajax="false" data-role="button" data-icon="arrow-r" data-inline="true">Next</a>
+    </div>
+</div>
+</div>
   </body>
 </html>

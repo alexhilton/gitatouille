@@ -6,12 +6,28 @@ import os.path
 import re
 
 IMAGE_BASE_URL = 'http://www.webarch.org/ProGit/images/'
-
 def changeHeader(content):
-    return re.sub('<div id=\'header\'>.*?</div>', '<div data-role="header" data-position="fixed"><h2>Pro Git</h2></div>', content, 0, re.MULTILINE | re.DOTALL)
+    return re.sub('<div id=\'header\'>.*?</div>',
+              '''<div data-role="header" data-position="fixed">
+<div data-role="controlgroup" data-type="horizontal">
+     <a href="#" data-ajax="false" data-role="button" data-icon="arrow-l" data-inline="true">Prev</a>
+     <a href="index2.html" data-ajax="false" data-role="button" data-icon="home" data-inline="true">Home</a>
+     <a href="#" data-ajax="false" data-role="button" data-icon="arrow-r" data-inline="true">Next</a>
+</div>
+</div>''',
+              content, 0, re.MULTILINE | re.DOTALL)
 
 def changeFooter(content):
-    return re.sub('</div>\s+<div id=\'footer\'>.*?</div>', '<div data-role="footer" data-position="fixed"><div data-role="navbar"><ul><li><a href="index2.html>Pro Git</a></li></ul></div></div></div>', content, 0, re.MULTILINE | re.DOTALL)
+    return re.sub('</div>\s+<div id=\'footer\'>.*?</div>',
+                  '''<div data-role="footer" data-position="fixed">
+    <div data-role="controlgroup" data-type="horizontal">
+        <a href="#" data-ajax="false" data-role="button" data-icon="arrow-l" data-inline="true">Prev</a>
+        <a href="index2.html" data-ajax="false" data-role="button" data-icon="home" data-inline="true">Home</a>
+        <a href="#" data-ajax="false" data-role="button" data-icon="arrow-r" data-inline="true">Next</a>
+    </div>
+</div>
+</div>''',
+                  content, 0, re.MULTILINE | re.DOTALL)
 
 def extract_id(pattern, content):
     return re.sub('<div id=\'' + pattern + '\'>.*?</div>', '', content, 0, re.MULTILINE | re.DOTALL)

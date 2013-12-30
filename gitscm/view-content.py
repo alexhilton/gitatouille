@@ -46,7 +46,7 @@ def generate_index(chaps):
         index.write(unicode('    <div data-role="collapsible">\n'))
         index.write(unicode('        <h3><a href="#">%s</a></h3>\n' % c['title']))
         index.write(unicode('        <div aria-hidden="true">\n'))
-        index.write(unicode('           <ul data-role="listview" data-theme="c" data-dividertheme="b">\n'))
+        index.write(unicode('           <ul data-role="listview" data-theme="f" data-dividertheme="f">\n'))
         for s in c['section']:
             index.write(unicode('             <li><a href="%s" data-ajax="false" data-transition="slideup">%s</a></li>\n' % (s['filename'], s['title'])))
         index.write(unicode('           </ul>\n'))

@@ -11,7 +11,13 @@
   </head>
   <body>
     <div data-role="page">
-      <div data-role="header" data-position="fixed"><h2>Pro Git</h2></div>
+      <div data-role="header" data-position="fixed">
+<div data-role="controlgroup" data-type="horizontal">
+     <a href="#" data-ajax="false" data-role="button" data-icon="arrow-l" data-inline="true">Prev</a>
+     <a href="index2.html" data-ajax="false" data-role="button" data-icon="home" data-inline="true">Home</a>
+     <a href="#" data-ajax="false" data-role="button" data-icon="arrow-r" data-inline="true">Next</a>
+</div>
+</div>
       <div data-role="content">
         <h2 id='_git'>在服务器部署 Git</h2>
 <p>开始架设 Git 服务器的时候，需要把一个现存的仓库导出为新的纯仓库——不包含当前工作目录的仓库。方法非常直截了当。 把一个仓库克隆为纯仓库，可以使用 clone 命令的 <code>--bare</code> 选项。纯仓库的目录名以 <code>.git</code> 结尾， 如下：</p>
@@ -42,6 +48,13 @@ $ git init --bare --shared</code></pre>
 <p>第二个办法是在主机上建立一个 <code>git</code> 账户，让每个需要写权限的人发送一个 SSH 公钥，然后将其加入 <code>git</code> 账户的 <code>~/.ssh/authorized_keys</code> 文件。这样一来，所有人都将通过 <code>git</code> 账户访问主机。这丝毫不会影响提交的数据——访问主机用的身份不会影响commit的记录。</p>
 <p>另一个办法是让 SSH 服务器通过某个 LDAP 服务，或者其他已经设定好的集中授权机制，来进行授权。只要每个人都能获得主机的 shell 访问权，任何可用的 SSH 授权机制都能达到相同效果。</p>
       </div>
-    <div data-role="footer" data-position="fixed"><div data-role="navbar"><ul><li><a href="index2.html>Pro Git</a></li></ul></div></div></div>
+    <div data-role="footer" data-position="fixed">
+    <div data-role="controlgroup" data-type="horizontal">
+        <a href="#" data-ajax="false" data-role="button" data-icon="arrow-l" data-inline="true">Prev</a>
+        <a href="index2.html" data-ajax="false" data-role="button" data-icon="home" data-inline="true">Home</a>
+        <a href="#" data-ajax="false" data-role="button" data-icon="arrow-r" data-inline="true">Next</a>
+    </div>
+</div>
+</div>
   </body>
 </html>

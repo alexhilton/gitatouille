@@ -11,7 +11,13 @@
   </head>
   <body>
     <div data-role="page">
-      <div data-role="header" data-position="fixed"><h2>Pro Git</h2></div>
+      <div data-role="header" data-position="fixed">
+<div data-role="controlgroup" data-type="horizontal">
+     <a href="#" data-ajax="false" data-role="button" data-icon="arrow-l" data-inline="true">Prev</a>
+     <a href="index2.html" data-ajax="false" data-role="button" data-icon="home" data-inline="true">Home</a>
+     <a href="#" data-ajax="false" data-role="button" data-icon="arrow-r" data-inline="true">Next</a>
+</div>
+</div>
       <div data-role="content">
         <h2 id='_ssh_'>生成 SSH 公钥</h2>
 <p>话虽如此，大多数 Git 服务器使用 SSH 公钥来授权。为了得到授权，系统中的每个没有公钥用户都得生成一个新的。该过程在所有操作系统上都差不多。 首先，确定一下是否已经有一个公钥了。SSH 公钥默认储存在账户的 <code>~/.ssh</code> 目录。进入那里并查看其内容，有没有公钥一目了然：</p>
@@ -40,6 +46,13 @@ mZ+AW4OZPnTPI89ZPmVMLuayrD2cE86Z/il8b+gw3r3+1nKatmIkjn2so1d01QraTlMqVSsbx
 NrRFi9wrf+M7Q== schacon@agadorlaptop.local</code></pre>
 <p>关于在多个操作系统上设立相同 SSH 公钥的教程，可以在 GitHub 有关 SSH 公钥的向导中找到：<code>http://github.com/guides/providing-your-ssh-key</code>。</p>
       </div>
-    <div data-role="footer" data-position="fixed"><div data-role="navbar"><ul><li><a href="index2.html>Pro Git</a></li></ul></div></div></div>
+    <div data-role="footer" data-position="fixed">
+    <div data-role="controlgroup" data-type="horizontal">
+        <a href="#" data-ajax="false" data-role="button" data-icon="arrow-l" data-inline="true">Prev</a>
+        <a href="index2.html" data-ajax="false" data-role="button" data-icon="home" data-inline="true">Home</a>
+        <a href="#" data-ajax="false" data-role="button" data-icon="arrow-r" data-inline="true">Next</a>
+    </div>
+</div>
+</div>
   </body>
 </html>

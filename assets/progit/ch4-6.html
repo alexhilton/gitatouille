@@ -11,7 +11,13 @@
   </head>
   <body>
     <div data-role="page">
-      <div data-role="header" data-position="fixed"><h2>Pro Git</h2></div>
+      <div data-role="header" data-position="fixed">
+<div data-role="controlgroup" data-type="horizontal">
+     <a href="#" data-ajax="false" data-role="button" data-icon="arrow-l" data-inline="true">Prev</a>
+     <a href="index2.html" data-ajax="false" data-role="button" data-icon="home" data-inline="true">Home</a>
+     <a href="#" data-ajax="false" data-role="button" data-icon="arrow-r" data-inline="true">Next</a>
+</div>
+</div>
       <div data-role="content">
         <h2 id='_gitweb'>网页界面 GitWeb</h2>
 <p>如今我们的项目已经有了读写和只读的连接方式，也许应该再架设一个简单的网页界面使其更加可视化。为此，Git 自带了一个叫做 GitWeb 的 CGI 脚本。你可以在类似 <code>http://git.kernel.org</code> 这样的站点找到 GitWeb 的应用实例（见图 4-1）。</p>
@@ -43,6 +49,13 @@ $ sudo cp -Rf gitweb /var/www/</code></pre>
 &lt;/VirtualHost&gt;</code></pre>
 <p>不难想象，GitWeb 可以使用任何兼容 CGI 的网页服务来运行；如果偏向使用其他的（译注：这里指Apache 以外的服务），配置也不会很麻烦。现在，通过 <code>http://gitserver</code> 就可以在线访问仓库了，在 <code>http://git.server</code> 上还可以通过 HTTP 克隆和获取仓库的内容。 Again, GitWeb can be served with any CGI capable web server; if you prefer to use something else, it shouldn’t be difficult to set up. At this point, you should be able to visit <code>http://gitserver/</code> to view your repositories online, and you can use <code>http://git.gitserver</code> to clone and fetch your repositories over HTTP.</p>
       </div>
-    <div data-role="footer" data-position="fixed"><div data-role="navbar"><ul><li><a href="index2.html>Pro Git</a></li></ul></div></div></div>
+    <div data-role="footer" data-position="fixed">
+    <div data-role="controlgroup" data-type="horizontal">
+        <a href="#" data-ajax="false" data-role="button" data-icon="arrow-l" data-inline="true">Prev</a>
+        <a href="index2.html" data-ajax="false" data-role="button" data-icon="home" data-inline="true">Home</a>
+        <a href="#" data-ajax="false" data-role="button" data-icon="arrow-r" data-inline="true">Next</a>
+    </div>
+</div>
+</div>
   </body>
 </html>
