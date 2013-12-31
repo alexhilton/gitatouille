@@ -4,6 +4,33 @@ import json
 import re
 import io
 
+def generate_content_list(chaps):
+    contents = []
+    for c in chaps:
+        for s in c['section']:
+            filename = str(s['filename'])
+            contents.append(filename)
+    print contents
+    return contents
+
+def generate_content_dict():
+    raw_chaps = generate_chaps()
+    chaps = generate_content_list(raw_chaps)
+    contents = {}
+    i = 0
+    for c in chaps:
+        prev = chaps[i]
+        if i > 0:
+            prev = chaps[i-1]
+        next = chaps[i]
+        if i < len(chaps) -1:
+            next = chaps[i+1]
+        contents[c] = {"prev": prev, "next": next}
+        i += 1
+
+    print contents
+    return contents
+
 def generate_java_code(chaps):
     print '\tList<ProGitChapter> chapters = new ArrayList<ProGitChapter>();'
     chap_clazz = 'ProGitChapter '
@@ -96,24 +123,31 @@ def generate_index(chaps):
     index.write(unicode('</html>'))
     index.close()
 
-raw_content = json.load(open('gitscm.json', 'r'))
+def generate_chaps():
+    raw_content = json.load(open('gitscm.json', 'r'))
 
-print "type of is ", type(raw_content)
-chaps = []
-for item in raw_content:
-    title = ''.join(item['title'])
-    link = ''.join(item['link'])
-    filename = ''.join(item['filename'])
-    if re.match('ch[1-9]-0', link, re.IGNORECASE) is not None:
-        chap = {}
-        chap['title'] = title
-        chap['filename'] = filename
-        chap['section'] = []
-        chaps.append(chap)
-    if link[0:3] == chaps[-1]['filename'][0:3]:
-        sec = {}
-        sec['title'] = title
-        sec['filename'] = filename
-        chaps[-1]['section'].append(sec)
+    print "type of is ", type(raw_content)
+    chaps = []
+    for item in raw_content:
+        title = ''.join(item['title'])
+        link = ''.join(item['link'])
+        filename = ''.join(item['filename'])
+        if re.match('ch[1-9]-0', link, re.IGNORECASE) is not None:
+            chap = {}
+            chap['title'] = title
+            chap['filename'] = filename
+            chap['section'] = []
+            chaps.append(chap)
+        if link[0:3] == chaps[-1]['filename'][0:3]:
+            sec = {}
+            sec['title'] = title
+            sec['filename'] = filename
+            chaps[-1]['section'].append(sec)
 
-generate_index(chaps)
+    return chaps
+
+if __name__ == '__main__':
+    chaps = generate_chaps()
+    generate_index(chaps)
+    content_list = generate_content_list(chaps)
+    generate_content_dict()

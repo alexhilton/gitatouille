@@ -4,6 +4,7 @@ from urllib import urlretrieve
 import os
 import os.path
 import re
+from view_content import generate_content_dict
 
 IMAGE_BASE_URL = 'http://www.webarch.org/ProGit/images/'
 def changeHeader(content):
@@ -17,16 +18,16 @@ def changeHeader(content):
 </div>''',
               content, 0, re.MULTILINE | re.DOTALL)
 
-def changeFooter(content):
+def changeFooter(content, prev, next):
     return re.sub('</div>\s+<div id=\'footer\'>.*?</div>',
                   '''<div data-role="footer" data-position="fixed">
     <div data-role="controlgroup" data-type="horizontal">
-        <a href="#" data-ajax="false" data-role="button" data-icon="arrow-l" data-inline="true">Prev</a>
+        <a href="%s" data-ajax="false" data-role="button" data-icon="arrow-l" data-inline="true">Prev</a>
         <a href="index.html" data-ajax="false" data-role="button" data-icon="home" data-inline="true">Home</a>
-        <a href="#" data-ajax="false" data-role="button" data-icon="arrow-r" data-inline="true">Next</a>
+        <a href="%s" data-ajax="false" data-role="button" data-icon="arrow-r" data-inline="true">Next</a>
     </div>
 </div>
-</div>''',
+</div>''' % (prev, next),
                   content, 0, re.MULTILINE | re.DOTALL)
 
 def extract_id(pattern, content):
@@ -80,13 +81,13 @@ def changeWrapper(content):
 def changeContent(content):
     return re.sub('<div id=\'content\'>', '<div data-role="content">', content, 0, 0)
 
-def process_file(html, out_dir):
+def process_file(html, out_dir, prev, next):
     out_file = open(os.path.join(out_dir, html), 'w')
     in_file = open(html, 'r')
     content = in_file.read()
     in_file.close()
     new_content = changeHeader(content)
-    new_content = changeFooter(new_content)
+    new_content = changeFooter(new_content, prev, next)
     new_content = extract_id('menu', new_content)
     new_content = extract_message('message', new_content)
     new_content = extract_id('nav', new_content)
@@ -103,11 +104,12 @@ def process_file(html, out_dir):
     out_file.close()
 
 def extract_file(out_dir, dirname, names):
+    chap_dict = generate_content_dict()
     #print out_dir, dirname, names
     if dirname == '.':
         for html in names:
             if html.endswith('.html'):
-                process_file(html, out_dir)
+                process_file(html, out_dir, chap_dict[html]['prev'], chap_dict[html]['next'])
 
 target_dir = '../assets/progit'
 if not os.path.exists(target_dir):
