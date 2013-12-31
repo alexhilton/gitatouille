@@ -37,9 +37,15 @@ def generate_index(chaps):
 </head>\n'''))
     index.write(unicode('<body>\n'))
     index.write(unicode('<div data-role="page" id="home">\n'))
-    index.write(unicode('<div data-role="header" data-theme="b" data-position="fixed">\n'))
-    index.write(unicode('<h2>Pro Git</h2>\n'))
-    index.write(unicode('</div>\n'))
+    index.write(unicode('''<div data-role="header" data-theme="b" data-position="fixed">
+    <div data-role="navbar">
+        <ul>
+            <li><a href="#home" data-ajax="false">Home</a></li>
+            <li><a href="#about" data-ajax="false">About</a></li>
+            <li><a href="#contact" data-ajax="false">Contact</a></li>
+        </ul>
+    </div>
+</div>'''))
     index.write(unicode('<div data-role="content">\n'))
     index.write(unicode('<div data-role="collapsible-set">\n'))
     for c in chaps:
@@ -54,10 +60,38 @@ def generate_index(chaps):
         index.write(unicode('    </div>\n'))
     index.write(unicode('</div>\n'))
     index.write(unicode('</div>\n'))
-    index.write(unicode('<div data-role="footer" data-theme="b" data-position="fixed">\n'))
-    index.write(unicode('<h2>Pro Git</h2>\n'))
+    index.write(unicode('''<div data-role="footer" data-theme="b" data-position="fixed">
+    <h2>Copyright</h2>
+</div>\n'''))
     index.write(unicode('</div>\n'))
-    index.write(unicode('</div>\n'))
+    index.write(unicode('''<div data-role="page" id="about">
+    <div data-role="header" data-theme="b" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#home" data-ajax="false">Home</a></li>
+                <li><a href="#about" data-ajax="false">About</a></li>
+                <li><a href="#contact" data-ajax="false">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+    <div data-role="content">
+        <p>Where there is a will, there is a way.</p>
+    </div>
+</div>\n'''))
+    index.write(unicode('''<div data-role="page" id="contact">
+    <div data-role="header" data-theme="b" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#home" data-ajax="false">Home</a></li>
+                <li><a href="#about" data-ajax="false">About</a></li>
+                <li><a href="#contact" data-ajax="false">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+    <div data-role="content">
+        <p>Freedom is nothing but a chance to be better.</p>
+    </div>
+</div>\n'''))
     index.write(unicode('</body>\n'))
     index.write(unicode('</html>'))
     index.close()
