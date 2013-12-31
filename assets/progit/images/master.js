@@ -10,4 +10,7 @@ $("body").ready(function() {
         console.warn("go back to the previous section" + url);
         $.mobile.changePage(url, {transition: "slide", reverse: true});
     });
+    $("a#back").on("click", function(event) {
+        window.history.back();
+    });
 });
