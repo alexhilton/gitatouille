@@ -10,9 +10,9 @@ def changeHeader(content):
     return re.sub('<div id=\'header\'>.*?</div>',
               '''<div data-role="header" data-position="fixed">
 <div data-role="controlgroup" data-type="horizontal">
-     <a href="#" data-ajax="false" data-role="button" data-icon="arrow-l" data-inline="true">Prev</a>
+     <a href="#" data-ajax="false" data-role="button" data-icon="arrow-l" data-inline="true">Back</a>
      <a href="index2.html" data-ajax="false" data-role="button" data-icon="home" data-inline="true">Home</a>
-     <a href="#" data-ajax="false" data-role="button" data-icon="arrow-r" data-inline="true">Next</a>
+     <a href="#" data-ajax="false" data-role="button" data-icon="search" data-inline="true">Search</a>
 </div>
 </div>''',
               content, 0, re.MULTILINE | re.DOTALL)

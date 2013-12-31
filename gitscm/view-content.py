@@ -21,7 +21,7 @@ def encode(text):
     return text.encode('utf8')
 
 def generate_index(chaps):
-    target = '../assets/progit/index2.html'
+    target = '../assets/progit/index.html'
     index = io.open(target, 'w', encoding = 'utf8')
     index.write(unicode('''<!DOCTYPE html>
 <html>
