@@ -18,16 +18,22 @@ def changeHeader(content):
 </div>''',
               content, 0, re.MULTILINE | re.DOTALL)
 
-def changeFooter(content, prev, next):
+def changeFooter(content, current, prev, next):
+    prev_disabled = 'false'
+    if current == prev:
+        prev_disabled = 'true'
+    next_disabled = 'false'
+    if current == next:
+        next_disabled = 'true'
     return re.sub('</div>\s+<div id=\'footer\'>.*?</div>',
                   '''<div data-role="footer" data-position="fixed">
     <div data-role="controlgroup" data-type="horizontal">
-        <a href="%s" data-ajax="false" data-role="button" data-icon="arrow-l" data-inline="true">Prev</a>
+        <a href="%s" data-ajax="false" data-role="button" data-icon="arrow-l" data-inline="true" data-disabled="%s">Prev</a>
         <a href="index.html" data-ajax="false" data-role="button" data-icon="home" data-inline="true">Home</a>
-        <a href="%s" data-ajax="false" data-role="button" data-icon="arrow-r" data-inline="true">Next</a>
+        <a href="%s" data-ajax="false" data-role="button" data-icon="arrow-r" data-inline="true" data-disabled="%s">Next</a>
     </div>
 </div>
-</div>''' % (prev, next),
+</div>''' % (prev, prev_disabled, next, next_disabled),
                   content, 0, re.MULTILINE | re.DOTALL)
 
 def extract_id(pattern, content):
@@ -87,7 +93,7 @@ def process_file(html, out_dir, prev, next):
     content = in_file.read()
     in_file.close()
     new_content = changeHeader(content)
-    new_content = changeFooter(new_content, prev, next)
+    new_content = changeFooter(new_content, html, prev, next)
     new_content = extract_id('menu', new_content)
     new_content = extract_message('message', new_content)
     new_content = extract_id('nav', new_content)
@@ -108,6 +114,8 @@ def extract_file(out_dir, dirname, names):
     #print out_dir, dirname, names
     if dirname == '.':
         for html in names:
+            if html == 'index.html':
+                continue
             if html.endswith('.html'):
                 process_file(html, out_dir, chap_dict[html]['prev'], chap_dict[html]['next'])
 
