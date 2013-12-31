@@ -10,16 +10,13 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 
 public class ProGitMobileActivity extends SherlockActivity {
     public static final String ACTION_VIEW_CONTENT = "com.hilton.gitatouille.VIEW_CONTENT";
-    private static final int MENU_PREV = 10;
-    private static final int MENU_NEXT = 11;
-    private static final int EXIT = 100;
+    private static final int MENU_EXIT = 100;
     private WebView mWebView;
     
     @SuppressLint({ "SetJavaScriptEnabled", "NewApi", "JavascriptInterface" })
@@ -74,14 +71,14 @@ public class ProGitMobileActivity extends SherlockActivity {
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add(0, EXIT, 0, "Exit");
+        menu.add(0, MENU_EXIT, 0, "Exit");
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-        case EXIT:
+        case MENU_EXIT:
             finish();
             break;
         default:
