@@ -67,9 +67,9 @@ def generate_index(chaps):
     index.write(unicode('''<div data-role="header" data-theme="b" data-position="fixed">
     <div data-role="navbar">
         <ul>
-            <li><a href="#home" data-ajax="false">Home</a></li>
-            <li><a href="#about" data-ajax="false">About</a></li>
-            <li><a href="#contact" data-ajax="false">Contact</a></li>
+            <li><a href="#home" data-ajax="false" data-icon="home" class="ui-btn-active">Home</a></li>
+            <li><a href="#about" data-ajax="false" data-icon="info">About</a></li>
+            <li><a href="#contact" data-ajax="false" data-icon="star">Contact</a></li>
         </ul>
     </div>
 </div>'''))
@@ -95,9 +95,9 @@ def generate_index(chaps):
     <div data-role="header" data-theme="b" data-position="fixed">
         <div data-role="navbar">
             <ul>
-                <li><a href="#home" data-ajax="false">Home</a></li>
-                <li><a href="#about" data-ajax="false">About</a></li>
-                <li><a href="#contact" data-ajax="false">Contact</a></li>
+                <li><a href="#home" data-ajax="false" data-icon="home">Home</a></li>
+                <li><a href="#about" data-ajax="false" data-icon="info" class="ui-btn-active">About</a></li>
+                <li><a href="#contact" data-ajax="false" data-icon="star">Contact</a></li>
             </ul>
         </div>
     </div>
@@ -109,9 +109,9 @@ def generate_index(chaps):
     <div data-role="header" data-theme="b" data-position="fixed">
         <div data-role="navbar">
             <ul>
-                <li><a href="#home" data-ajax="false">Home</a></li>
-                <li><a href="#about" data-ajax="false">About</a></li>
-                <li><a href="#contact" data-ajax="false">Contact</a></li>
+                <li><a href="#home" data-ajax="false" data-icon="home">Home</a></li>
+                <li><a href="#about" data-ajax="false" data-icon="info">About</a></li>
+                <li><a href="#contact" data-ajax="false" data-icon="star" class="ui-btn-active">Contact</a></li>
             </ul>
         </div>
     </div>
