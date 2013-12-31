@@ -1,5 +1,6 @@
 $("body").ready(function() {
     console.warn("what is the shit");
+    console.warn("the current url is " + jQuery.mobile.path.getDocumentUrl());
     $("p").on("swipeleft", function(event) {
         var url = NavigationHelper.nextSection();
         console.warn("jump to next section url " + url);

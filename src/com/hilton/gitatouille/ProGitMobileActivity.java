@@ -2,6 +2,7 @@ package com.hilton.gitatouille;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.webkit.ConsoleMessage;
 import android.webkit.JsResult;
@@ -17,6 +18,7 @@ import com.actionbarsherlock.view.MenuItem;
 public class ProGitMobileActivity extends SherlockActivity {
     public static final String ACTION_VIEW_CONTENT = "com.hilton.gitatouille.VIEW_CONTENT";
     private static final int MENU_EXIT = 100;
+    private static final String CURRENT_URL = "current_url";
     private WebView mWebView;
     
     @SuppressLint({ "SetJavaScriptEnabled", "NewApi", "JavascriptInterface" })
@@ -24,6 +26,7 @@ public class ProGitMobileActivity extends SherlockActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mobile);
+        Log.e("fuck", "on create instance " + savedInstanceState + ", intent "+getIntent());
         mWebView = (WebView) findViewById(R.id.webview);
         final WebSettings ws = mWebView.getSettings();
         ws.setJavaScriptEnabled(true);
@@ -31,8 +34,6 @@ public class ProGitMobileActivity extends SherlockActivity {
         ws.setJavaScriptCanOpenWindowsAutomatically(true);
         ws.setAllowFileAccessFromFileURLs(true);
         
-        NavigationHelper nh = new NavigationHelper();
-        mWebView.addJavascriptInterface(nh, NavigationHelper.NAME);
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -54,9 +55,19 @@ public class ProGitMobileActivity extends SherlockActivity {
             }
         });
         
-        mWebView.loadUrl(ProGit.getHomepageUrl());
+        String currentUrl = null;
+        if (savedInstanceState != null) {
+            currentUrl = savedInstanceState.getString(CURRENT_URL);
+        }
+        mWebView.loadUrl(TextUtils.isEmpty(currentUrl) ? ProGit.getHomepageUrl() : currentUrl);
     }
     
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString(CURRENT_URL, mWebView.getUrl());
+        super.onSaveInstanceState(outState);
+    }
+
     @Override
     public void onBackPressed() {
         if (mWebView != null && mWebView.canGoBack()) {
@@ -85,17 +96,5 @@ public class ProGitMobileActivity extends SherlockActivity {
             break;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private class NavigationHelper {
-        public static final String NAME = "NavigationHelper";
-        public String nextSection() {
-            final String url = ProGit.getNextSectionUrl();
-            return url;
-        }
-        
-        public String prevSection() {
-            return ProGit.getPreviousSectionUrl();
-        }
     }
 }
